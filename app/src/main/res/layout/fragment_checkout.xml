@@ -90,6 +90,7 @@
                 android:text="Confirm &amp; Pay"
                 android:textAllCaps="false"
                 android:paddingHorizontal="15dp"
+                android:onClick="@{(view) -> model.createTransaction(view)}"
                 android:background="@drawable/button_background"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

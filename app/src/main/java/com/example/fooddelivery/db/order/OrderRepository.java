@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.fooddelivery.db.FoodDatabase;
+import com.example.fooddelivery.helper.Constant;
 
 import java.util.List;
 
@@ -19,11 +20,15 @@ public class OrderRepository {
     }
 
     public List<OrderItem> getAllOrderedItems() {
-        return orderDao.getAllOrderedItems("");
+        return orderDao.getAllOrderedItems(Constant.userName);
     }
 
     public void deleteORDER(OrderItem orderItem) {
         orderDao.deleteFoodData(orderItem.id);
+    }
+
+    public void clearCart(){
+        orderDao.deleteByTx(Constant.userName);
     }
 
     public void updateTxIDBasedOnOrderId(String transactionId) { orderDao.updateTxIDBasedOnOrderId(transactionId,"");}

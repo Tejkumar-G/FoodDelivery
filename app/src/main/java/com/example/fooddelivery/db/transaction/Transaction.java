@@ -13,26 +13,26 @@ public class Transaction {
 
     String userRole;
 
-    int totalPrice;
+    double totalPrice;
+
+    int totalItems = 0;
 
     String date;
-
-    int transactionId;
 
 
     public Transaction(
             String userName,
             String userRole,
-            int totalPrice,
+            double totalPrice,
             String date,
-            int transactionId
+            int totalItems
     ) {
 
         this.userName = userName;
         this.userRole = userRole;
         this.totalPrice = totalPrice;
         this.date = date;
-        this.transactionId = transactionId;
+        this.totalItems = totalItems;
     }
 
     public Transaction() {
@@ -64,11 +64,11 @@ public class Transaction {
         this.userRole = userRole;
     }
 
-    public int getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -80,12 +80,12 @@ public class Transaction {
         this.date = date;
     }
 
-    public int getTransactionId() {
-        return transactionId;
+    public int getTotalItems() {
+        return totalItems;
     }
 
-    public void setTransactionId(int transactionId) {
-        this.transactionId = transactionId;
+    public void setTotalItems(int totalItems) {
+        this.totalItems = totalItems;
     }
 }
 

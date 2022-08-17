@@ -24,6 +24,10 @@ public interface OrderDao {
     @Query("DELETE FROM order_table Where id = :id")
     void deleteFoodData(int id);
 
+    @Query("DELETE FROM order_table Where transactionId = :txId")
+    void deleteByTx(String txId);
+
+
     @Update
     void updateFoodData(OrderItem order);
 

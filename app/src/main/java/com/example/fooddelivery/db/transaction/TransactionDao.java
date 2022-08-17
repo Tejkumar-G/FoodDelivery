@@ -22,9 +22,9 @@ public interface TransactionDao {
     @Update
     void updateTransactionData(Transaction transaction);
 
-    @Query("SELECT * FROM transaction_table ORDER BY transactionId ASC")
+    @Query("SELECT * FROM transaction_table ORDER BY id ASC")
     List<Transaction> getAllTransactionItem();
 
-    @Query("SELECT * FROM transaction_table Where transactionId = :transactionId")
-    List<Transaction> getTransactionDataBasedOnTransactionId(String transactionId);
+    //@Query("SELECT * FROM transaction_table Where transactionId = :transactionId")
+    //List<Transaction> getTransactionDataBasedOnTransactionId(String transactionId);
 }

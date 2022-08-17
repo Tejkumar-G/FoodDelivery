@@ -10,6 +10,7 @@ import com.example.fooddelivery.BR;
 import com.example.fooddelivery.db.Food;
 import com.example.fooddelivery.db.order.OrderItem;
 import com.example.fooddelivery.db.order.OrderRepository;
+import com.example.fooddelivery.helper.Constant;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.helper.Utills;
 
@@ -103,8 +104,8 @@ public class ProductDetailsViewModel extends BaseObservable {
     void addItem(Context context) {
         OrderRepository orderRepository = new OrderRepository(context);
 
-        List<OrderItem> itemList = orderRepository.getOrderedItemsBasedOnFoodIdAndTransactionId(food.getId(),"");
-        OrderItem orderItem = new OrderItem(food.getFoodName(), food.getFoodPrice(),food.getId(), food.getCategory(), food.getImageName(), "", food.getImageUrl(), Integer.parseInt(totalItems));
+        List<OrderItem> itemList = orderRepository.getOrderedItemsBasedOnFoodIdAndTransactionId(food.getId(), Constant.userName);
+        OrderItem orderItem = new OrderItem(food.getFoodName(), food.getFoodPrice(),food.getId(), food.getCategory(), food.getImageName(), Constant.userName, food.getImageUrl(), Integer.parseInt(totalItems));
         if(itemList.isEmpty())
             orderRepository.addOrderedItem(orderItem);
         else {
