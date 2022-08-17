@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.fooddelivery.R;
+import com.example.fooddelivery.SplashFragment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +25,6 @@ public class DashboardViewModel extends ViewModel {
     ItemCategoriesAdaptor categoryAdaptor = new ItemCategoriesAdaptor(categoryDataList, new CategoryListener() {
                 @Override
                 public void onClick(CategoryData categoryData) {
-
                     displayProducts(categoryData);
                 }
             });

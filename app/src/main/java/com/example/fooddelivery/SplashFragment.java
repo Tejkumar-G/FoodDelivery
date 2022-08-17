@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SplashFragment extends Fragment {
+public class SplashFragment extends BaseFragment {
 
 
 
@@ -98,29 +98,5 @@ public class SplashFragment extends Fragment {
         }
     }
 
-    void replaceFragment( Fragment fragment, Boolean backStack) {
-        FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout,fragment, fragment.getClass().getName());
-        if (backStack){
-            fragmentTransaction.addToBackStack(fragment.getClass().getName());
-        }
-        fragmentTransaction.commit();
-    }
 
-    void addFragment( Fragment fragment, Boolean backStack) {
-        FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.frameLayout,fragment, fragment.getClass().getName());
-        if (backStack){
-            fragmentTransaction.addToBackStack(fragment.getClass().getName());
-        }
-        fragmentTransaction.commit();
-    }
-
-    void addFragment(Fragment fragment){
-        addFragment(fragment, true);
-    }
-
-    void replaceFragment(Fragment fragment){
-        replaceFragment(fragment, true);
-    }
 }

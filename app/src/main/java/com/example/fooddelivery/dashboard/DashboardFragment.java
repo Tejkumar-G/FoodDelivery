@@ -15,12 +15,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fooddelivery.BaseFragment;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.databinding.FragmentDashboardBinding;
 
 
 //@AndroidEntryPoint
-public class DashboardFragment extends Fragment {
+public class DashboardFragment extends BaseFragment {
 
     private DashboardViewModel mViewModel;
 
