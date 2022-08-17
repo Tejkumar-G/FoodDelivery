@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="model"
             type="com.example.fooddelivery.checkout.CheckoutViewModel" />
@@ -32,6 +33,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/rectangle_left"
+            android:onClick="@{(view)->model.goToBackScreen(view)}"
             android:backgroundTint="@color/purple_500"
             android:padding="15dp" />
 
@@ -104,6 +106,7 @@
                 android:textAllCaps="false"
                 android:paddingHorizontal="25dp"
                 android:layout_marginLeft="10dp"
+                android:visibility="@{model.manager?View.VISIBLE:View.INVISIBLE}"
                 android:background="@drawable/button_background"
                 app:layout_constraintStart_toEndOf="@id/confirm_button"
                 app:layout_constraintBottom_toBottomOf="parent"

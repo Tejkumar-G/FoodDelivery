@@ -14,6 +14,7 @@ import com.example.fooddelivery.helper.Constant;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.helper.Utills;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +26,15 @@ public class CheckoutViewModel extends BaseObservable {
     String total;
     public List<OrderItem> orderItemList = new ArrayList<>();
 
+    Boolean isManager = Constant.userRole.equals("Manager");
 
+    public Boolean getManager() {
+        return isManager;
+    }
+
+    public void setManager(Boolean manager) {
+        isManager = manager;
+    }
 
     public String getSubTotal() {
         return "$"+subTotal;
@@ -53,6 +62,10 @@ public class CheckoutViewModel extends BaseObservable {
         this.total = total;
     }
 
+    public void goToBackScreen(View view) {
+        Navigation.goBackScreen(Navigation.getActivity(view));
+    }
+
 
 
     public void getOrderItems(Context context) {
@@ -67,8 +80,10 @@ public class CheckoutViewModel extends BaseObservable {
             subtotalInteger += (orderItem.getFoodPrice()*orderItem.getQty());
         }
         subTotal = subtotalInteger + "";
-        tax = subtotalInteger / 100 * 8.25 + "";
-        total = (subtotalInteger + subtotalInteger / 100 * 8.25) + "";
+        DecimalFormat df = new DecimalFormat("0.00");
+        tax = df.format(subtotalInteger / 100 * 8.25);
+
+        total = df.format(subtotalInteger + subtotalInteger / 100 * 8.25);
     }
 
     double getTotalVal(){
