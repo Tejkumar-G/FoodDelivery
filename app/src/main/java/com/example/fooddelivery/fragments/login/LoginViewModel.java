@@ -16,6 +16,7 @@ import com.example.fooddelivery.helper.Constant;
 import com.example.fooddelivery.helper.ImageConvertor;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.dashboard.DashboardFragment;
+import com.example.fooddelivery.helper.Utills;
 
 
 public class LoginViewModel extends BaseObservable {
@@ -43,7 +44,7 @@ public class LoginViewModel extends BaseObservable {
                 Navigation.replaceFragment(Navigation.getActivity(view),new DashboardFragment());
             }
             else {
-                Toast.makeText(view.getContext(), "Invalid Password", Toast.LENGTH_SHORT).show();
+                Utills.showToast( "Invalid Password", view.getContext());
             }
         }
 

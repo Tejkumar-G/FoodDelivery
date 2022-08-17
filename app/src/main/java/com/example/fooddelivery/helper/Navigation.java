@@ -38,7 +38,7 @@ public class Navigation {
         replaceFragment(activity,fragment, true);
     }
 
-    public static void goBackScreen(FragmentActivity activity, Fragment fragment) {
+    public static void goBackScreen(FragmentActivity activity) {
         activity.getSupportFragmentManager().popBackStack();
     }
 

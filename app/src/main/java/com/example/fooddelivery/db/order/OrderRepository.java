@@ -22,6 +22,10 @@ public class OrderRepository {
         return orderDao.getAllOrderedItems("");
     }
 
+    public void deleteORDER(OrderItem orderItem) {
+        orderDao.deleteFoodData(orderItem.id);
+    }
+
     public void updateTxIDBasedOnOrderId(String transactionId) { orderDao.updateTxIDBasedOnOrderId(transactionId,"");}
 
     public List<OrderItem> getOrderedItemsBasedOnTransactionId(String transactionId) {

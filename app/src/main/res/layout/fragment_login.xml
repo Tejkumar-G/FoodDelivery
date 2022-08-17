@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#555555">
+        android:background="@mipmap/splash2">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                     android:layout_height="40dp"
                     android:layout_marginTop="40dp"
                     android:background="@drawable/et_border"
-                    android:hint="password"
+                    android:hint="Password"
                     android:text="@={model.message}"
                     android:inputType="number"
                     android:maxLength="4"
@@ -50,6 +50,7 @@
                     android:layout_marginTop="30dp"
                     android:text="Login"
                     android:textColor="@color/white"
+                    android:background="@drawable/button_background"
                     android:backgroundTint="#555555"
                     android:layout_marginBottom="40dp"
                     android:onClick="@{(view) -> model.submit(view)}"

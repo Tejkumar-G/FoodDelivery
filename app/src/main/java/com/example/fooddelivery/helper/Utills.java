@@ -3,6 +3,7 @@ package com.example.fooddelivery.helper;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.widget.Toast;
 
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.db.Food;
@@ -49,6 +50,10 @@ public class Utills {
 
           return foodList;
 
+     }
+
+     public static void showToast(String message, Context context) {
+          Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
      }
 
 }

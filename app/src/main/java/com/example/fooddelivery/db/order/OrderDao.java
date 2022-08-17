@@ -18,11 +18,14 @@ public interface OrderDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertFoodData(OrderItem order);
 
-    @Delete
-    void deleteUserData(OrderItem order);
+//    @Delete
+//    void deleteUserData(OrderItem order);
+
+    @Query("DELETE FROM order_table Where id = :id")
+    void deleteFoodData(int id);
 
     @Update
-    void updateUserData(OrderItem order);
+    void updateFoodData(OrderItem order);
 
     @Query("Update order_table SET transactionId = :transactionId where transactionId = :id")
     void updateTxIDBasedOnOrderId(String transactionId,String id);
