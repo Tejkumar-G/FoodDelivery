@@ -19,7 +19,7 @@ public class SplashImageRepository {
         splashImageDao = db.splashImageDao();
     }
 
-    public List<byte []> getAllFoodItem() {
+    public List<byte []> getAllImageData() {
         return splashImageDao.getAllImagetem();
     }
 
