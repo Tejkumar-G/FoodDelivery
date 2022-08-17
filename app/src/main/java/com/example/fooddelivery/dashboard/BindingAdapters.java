@@ -12,4 +12,6 @@ public class BindingAdapters {
     public static void addAdapter(RecyclerView recyclerView, ItemCategoriesAdaptor adapter) {
         recyclerView.setAdapter(adapter);
     }
+
+
 }

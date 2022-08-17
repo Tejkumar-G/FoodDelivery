@@ -15,6 +15,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 
 import com.example.fooddelivery.dashboard.DashboardFragment;
+import com.example.fooddelivery.helper.Navigation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SplashFragment extends BaseFragment {
+public class SplashFragment extends Fragment {
 
 
 
@@ -52,11 +53,17 @@ public class SplashFragment extends BaseFragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        viewPager = view.findViewById(R.id.view_pager);
-        pagerAdapter = new SplashSlidePagerAdapter(getActivity());
-        viewPager.setAdapter(pagerAdapter);
-        startSplashTimer();
+        if(images.size()>0) {
+            viewPager = view.findViewById(R.id.view_pager);
+            viewPager.setVisibility(View.VISIBLE);
+            pagerAdapter = new SplashSlidePagerAdapter(getActivity());
+            viewPager.setAdapter(pagerAdapter);
+            startSplashTimer();
+        } else {
+            new Handler().postDelayed(() -> {
+                Navigation.replaceFragment(getActivity(),new DashboardFragment());
+            }, 2000);
+        }
     }
 
     void startSplashTimer(){
@@ -64,7 +71,7 @@ public class SplashFragment extends BaseFragment {
         Runnable update = () -> {
             if ( currentPage == images.size() ) {
 //                replaceFragment(new ImageFragment());
-                replaceFragment(new DashboardFragment());
+                Navigation.replaceFragment(getActivity(),new DashboardFragment());
             }
             viewPager.setCurrentItem(currentPage++, true);
         };

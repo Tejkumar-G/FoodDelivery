@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fooddelivery.R;
+import com.example.fooddelivery.helper.Navigation;
+import com.example.fooddelivery.product_details.ProductDetailsFragment;
 
 import java.util.List;
 
@@ -35,6 +37,9 @@ public class ProductsListAdaptor extends RecyclerView.Adapter<ProductsListAdapto
         viewHolder.productImage.setImageResource(list.get(position).image);
         viewHolder.productName.setText(list.get(position).productName);
         viewHolder.productPrice.setText(list.get(position).productPrice);
+        viewHolder.itemView.setOnClickListener(view -> {
+            Navigation.replaceFragment(Navigation.getActivity(view),new ProductDetailsFragment());
+        });
 
     }
 

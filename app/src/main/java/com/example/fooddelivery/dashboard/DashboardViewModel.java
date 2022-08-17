@@ -1,11 +1,13 @@
 package com.example.fooddelivery.dashboard;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.SplashFragment;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,23 +18,15 @@ public class DashboardViewModel extends ViewModel {
 //    DashboardViewModel(SavedStateHandle savedStateHandle){
 //        this.savedStateHandle = savedStateHandle;
 //    }
+    LiveData<List<ProductData>> productDataList = new MutableLiveData<>();
 
 
     List<CategoryData> categoryDataList = Arrays.asList(
             new CategoryData(R.drawable.burger, "Burger"),
             new CategoryData(R.drawable.burger, "Pizza")
     );
-    ItemCategoriesAdaptor categoryAdaptor = new ItemCategoriesAdaptor(categoryDataList, new CategoryListener() {
-                @Override
-                public void onClick(CategoryData categoryData) {
-                    displayProducts(categoryData);
-                }
-            });
-
 
     MutableLiveData<ProductsListAdaptor> productAdaptor = new MutableLiveData<ProductsListAdaptor>();
-
-
 
 
     void displayProducts(CategoryData categoryData) {
@@ -56,6 +50,16 @@ public class DashboardViewModel extends ViewModel {
                 new ProductData(R.drawable.burger, categoryName + " 4", "$0.1"),
                 new ProductData(R.drawable.burger, categoryName + " 5", "$0.1")
         );
+    }
+
+    public ItemCategoriesAdaptor getCategoryAdaptor(){
+        ItemCategoriesAdaptor categoryAdaptor = new ItemCategoriesAdaptor(categoryDataList, new CategoryListener() {
+            @Override
+            public void onClick(CategoryData categoryData) {
+                displayProducts(categoryData);
+            }
+        });
+        return categoryAdaptor;
     }
 
 }

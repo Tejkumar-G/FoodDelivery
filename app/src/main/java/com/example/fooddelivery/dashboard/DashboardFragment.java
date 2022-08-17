@@ -7,21 +7,18 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fooddelivery.BaseFragment;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.databinding.FragmentDashboardBinding;
 
 
 //@AndroidEntryPoint
-public class DashboardFragment extends BaseFragment {
+public class DashboardFragment extends Fragment {
 
     private DashboardViewModel mViewModel;
 
@@ -32,7 +29,7 @@ public class DashboardFragment extends BaseFragment {
         mViewModel = new ViewModelProvider(requireActivity()).get(DashboardViewModel.class);
         FragmentDashboardBinding binding = FragmentDashboardBinding.inflate(inflater, container, false);
         binding.setViewModel(mViewModel);
-        BindingAdapters.addAdapter(binding.getRoot().findViewById(R.id.category_list), mViewModel.categoryAdaptor);
+        BindingAdapters.addAdapter(binding.getRoot().findViewById(R.id.category_list), mViewModel.getCategoryAdaptor());
         binding.setLifecycleOwner(this);
         return binding.getRoot();
 //        return inflater.inflate(R.layout.fragment_dashboard, container, false);
