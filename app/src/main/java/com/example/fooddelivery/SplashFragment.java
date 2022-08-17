@@ -9,17 +9,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
-
 import com.example.fooddelivery.dashboard.DashboardFragment;
+import com.example.fooddelivery.fragments.login.LoginFragment;
 import com.example.fooddelivery.helper.Navigation;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -61,7 +59,7 @@ public class SplashFragment extends Fragment {
             startSplashTimer();
         } else {
             new Handler().postDelayed(() -> {
-                Navigation.replaceFragment(getActivity(),new DashboardFragment());
+                Navigation.replaceFragment(getActivity(),new LoginFragment());
             }, 2000);
         }
     }
@@ -71,7 +69,7 @@ public class SplashFragment extends Fragment {
         Runnable update = () -> {
             if ( currentPage == images.size() ) {
 //                replaceFragment(new ImageFragment());
-                Navigation.replaceFragment(getActivity(),new DashboardFragment());
+                Navigation.replaceFragment(getActivity(),new LoginFragment());
             }
             viewPager.setCurrentItem(currentPage++, true);
         };

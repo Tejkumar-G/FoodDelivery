@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_white"
-    tools:context=".product_details.ProductDetailsFragment">
+    tools:context=".fragments.product_details.ProductDetailsFragment">
 
     <View
         android:id="@+id/top_layer"
@@ -103,7 +103,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@color/background_white">
         <Button
-            android:id="@+id/add_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add Item"
