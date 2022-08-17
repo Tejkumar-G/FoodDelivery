@@ -1,12 +1,12 @@
 package com.example.fooddelivery.dashboard;
 
 public class ProductData {
-    public int image;
+    public String imageUrl;
     public String productName;
     public String productPrice;
 
-    public ProductData(int image, String productName, String productPrice) {
-        this.image = image;
+    public ProductData(String imageUrl, String productName, String productPrice) {
+        this.imageUrl = imageUrl;
         this.productName = productName;
         this.productPrice = productPrice;
     }

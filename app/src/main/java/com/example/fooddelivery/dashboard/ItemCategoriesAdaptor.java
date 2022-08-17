@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.fooddelivery.R;
 
 import java.util.List;
@@ -34,7 +35,11 @@ public class ItemCategoriesAdaptor extends RecyclerView.Adapter<ItemCategoriesAd
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder,
                      final int position) {
-        viewHolder.categoryImage.setImageResource(list.get(position).image);
+        Glide.with(viewHolder.view.getContext())
+                .load(list.get(position).imageUrl)
+                .dontAnimate()
+                .into(viewHolder.categoryImage);
+
         viewHolder.categoryName.setText(list.get(position).categoryName);
         viewHolder.cardView.setOnClickListener(view -> {
             categoryListener.onClick(list.get(position));

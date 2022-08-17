@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.product_details.ProductDetailsFragment;
@@ -34,7 +35,11 @@ public class ProductsListAdaptor extends RecyclerView.Adapter<ProductsListAdapto
     public void onBindViewHolder(final ProductsListAdaptor.ViewHolder viewHolder,
                                  final int position) {
 
-        viewHolder.productImage.setImageResource(list.get(position).image);
+        Glide.with(viewHolder.view.getContext())
+                .load(list.get(position).imageUrl)
+                .dontAnimate()
+                .into(viewHolder.productImage);
+
         viewHolder.productName.setText(list.get(position).productName);
         viewHolder.productPrice.setText(list.get(position).productPrice);
         viewHolder.itemView.setOnClickListener(view -> {
