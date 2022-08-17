@@ -3,59 +3,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ImageView
-        android:id="@+id/customImage"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <TextView
+        android:id="@+id/tv_txs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/guide40"
-        android:layout_marginTop="50dp"
-        android:paddingVertical="10dp"
-        app:layout_constraintStart_toStartOf="@id/guide20"
-        app:layout_constraintEnd_toEndOf="@id/guide80" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide20"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".20"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:text="Transaction History"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/tv_txs"/>
+    <TextView
+        android:id="@+id/tv_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_txs"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:text="Logout"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/tv_txs"/>
+    <TextView
+        android:id="@+id/tv_images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_logout"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:text="Splash Images"/>
+
+    <TextView
+        android:id="@+id/addImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Image"
+        android:textColor="@color/black"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:padding="8dp"
+        android:background="@drawable/et_border"
+        app:layout_constraintTop_toTopOf="@id/tv_images"
+        app:layout_constraintEnd_toEndOf="@id/tv_images"
         />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide40"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".35"
-        />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide80"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".80"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tv_images"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <Button
-        android:id="@+id/camera"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:text="Camera"
-        app:layout_constraintTop_toBottomOf="@+id/customImage"
-        app:layout_constraintStart_toStartOf="@id/customImage"
-        app:layout_constraintEnd_toEndOf="@id/customImage"
-        />
 
-    <Button
-        android:id="@+id/save"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:text="Save"
-        app:layout_constraintTop_toBottomOf="@+id/camera"
-        app:layout_constraintStart_toStartOf="@id/camera"
-        app:layout_constraintEnd_toEndOf="@id/camera"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
