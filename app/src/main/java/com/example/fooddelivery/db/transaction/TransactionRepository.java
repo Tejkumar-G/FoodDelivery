@@ -9,18 +9,21 @@ public class TransactionRepository {
 
 
     public TransactionDao transactionDao;
-    private List<Transaction> transactionList;
 
     public TransactionRepository(Context application) {
         FoodDatabase db = FoodDatabase.getInstance(application);
         transactionDao = db.transactionDao();
     }
 
-    public List<Transaction> getAllFoodItem() {
+    public List<Transaction> getAllTransactionItems() {
         return transactionDao.getAllTransactionItem();
     }
 
-    public void addImageData(Transaction transaction) {
+    public List<Transaction> getAllTransactionItemsBasedOnTransactionId(String transactionId) {
+        return transactionDao.getTransactionDataBasedOnTransactionId(transactionId);
+    }
+
+    public void addTransactionData(Transaction transaction) {
 
         new InsertTransactionData(transactionDao).execute(transaction);
 

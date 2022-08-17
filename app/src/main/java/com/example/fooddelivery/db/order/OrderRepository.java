@@ -18,10 +18,12 @@ public class OrderRepository {
     }
 
     public List<OrderItem> getAllOrderedItems() {
-        return orderDao.getAllOrderedItems();
+        return orderDao.getAllOrderedItems("");
     }
 
-    public List<OrderItem> getOrderedItemsBasedOnCategory(String transactionId) {
+    public void updateTxIDBasedOnOrderId(String transactionId) { orderDao.updateTxIDBasedOnOrderId(transactionId,"");}
+
+    public List<OrderItem> getOrderedItemsBasedOnTransactionId(String transactionId) {
         return orderDao.getOrderItemBasedOnTransactionID(transactionId);
     }
 

@@ -24,8 +24,11 @@ public interface OrderDao {
     @Update
     void updateUserData(OrderItem order);
 
-    @Query("SELECT * FROM order_table Where transactionId is NULL ORDER BY foodName ASC")
-    List<OrderItem> getAllOrderedItems();
+    @Query("Update order_table SET transactionId = :transactionId where transactionId = :id")
+    void updateTxIDBasedOnOrderId(String transactionId,String id);
+
+    @Query("SELECT * FROM order_table Where transactionId = :id ORDER BY foodName ASC")
+    List<OrderItem> getAllOrderedItems(String id);
 
     @Query("SELECT * FROM order_table Where transactionId = :transactionId ORDER BY foodName ASC")
     List<OrderItem> getOrderItemBasedOnTransactionID(String transactionId);
