@@ -106,7 +106,7 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
             itemPrice = view.findViewById(R.id.item_price);
             addItem = view.findViewById(R.id.add_item);
             removeItem = view.findViewById(R.id.remove_item);
-            itemCount = view.findViewById(R.id.item_count);
+            itemCount = view.findViewById(R.id.item_count_);
 //            subTotal = view.findViewById(R.id.sub_total);
 //            tax = view.findViewById(R.id.tax);
 //            total = view.findViewById(R.id.total);

@@ -13,7 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fooddelivery.R;
+import com.example.fooddelivery.db.transaction.Transaction;
 import com.example.fooddelivery.db.transaction.TransactionRepository;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 public class TransactionsFragment extends Fragment {
@@ -36,4 +40,5 @@ public class TransactionsFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         recyclerView.setAdapter(transactionAdaptor);
     }
+
 }

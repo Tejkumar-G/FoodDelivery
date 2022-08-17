@@ -23,7 +23,7 @@ public class TransactionAdaptor extends RecyclerView.Adapter<TransactionAdaptor.
     @NonNull
     @Override
     public TransactionAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_item, parent, false);
         return new TransactionAdaptor.ViewHolder(view);
     }
 
@@ -32,9 +32,10 @@ public class TransactionAdaptor extends RecyclerView.Adapter<TransactionAdaptor.
                                  final int position) {
 
         viewHolder.userName.setText(list.get(position).getUserName());
-        viewHolder.price.setText(list.get(position).getTotalPrice()+"");
+        viewHolder.price.setText(list.get(position).getTotalPrice() + " ");
+        viewHolder.noOfItems.setText(list.size()+"");
         viewHolder.time.setText(list.get(position).getDate());
-        viewHolder.number.setText(list.get(position).getTotalItems()+"");
+        viewHolder.number.setText(list.get(position).getId() + "");
     }
 
     @Override
@@ -52,11 +53,13 @@ public class TransactionAdaptor extends RecyclerView.Adapter<TransactionAdaptor.
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView userName;
         TextView price;
+        TextView noOfItems;
         TextView time;
         TextView number;
         ViewHolder(View view) {
             super(view);
             userName = view.findViewById(R.id.user_name);
+            noOfItems = view.findViewById(R.id.no_of_items);
             price = view.findViewById(R.id.price);
             time = view.findViewById(R.id.time);
             number = view.findViewById(R.id.number);
