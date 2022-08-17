@@ -4,38 +4,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
-        android:id="@+id/tv_txs"
+        android:id="@+id/tv_images"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="16dp"
         android:textColor="@color/black"
-        android:text="Transaction History"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/tv_txs"/>
-    <TextView
-        android:id="@+id/tv_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_txs"
-        android:padding="16dp"
-        android:textColor="@color/black"
-        android:text="Logout"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/tv_txs"/>
-    <TextView
-        android:id="@+id/tv_images"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_logout"
-        android:padding="16dp"
-        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:text="Splash Images"/>
 
     <TextView

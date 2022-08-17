@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fooddelivery.MainActivity;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.databinding.FragmentDashboardBinding;
 
@@ -30,6 +31,9 @@ public class DashboardFragment extends Fragment {
         FragmentDashboardBinding binding = FragmentDashboardBinding.inflate(inflater, container, false);
         binding.setViewModel(mViewModel);
         binding.setLifecycleOwner(this);
+        binding.ivMenu.setOnClickListener(v->{
+            ((MainActivity)getActivity()).openDrawer();
+        });
         return binding.getRoot();
 //        return inflater.inflate(R.layout.fragment_dashboard, container, false);
 

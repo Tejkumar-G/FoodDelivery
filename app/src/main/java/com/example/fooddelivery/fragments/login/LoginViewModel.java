@@ -32,12 +32,14 @@ public class LoginViewModel extends BaseObservable {
             if (message.contentEquals("1234")) {
                 User user = new User("Dola","Server", ImageConvertor.convertPNGBitmapToByteArray(BitmapFactory.decodeResource(view.getContext().getResources(), R.mipmap.server)));
                 Constant.userRole = "Server";
-                Navigation.replaceFragment(Navigation.getActivity(view),new DashboardFragment());
+                Navigation.getActivity(view).configureUserInfo(user,R.mipmap.server);
+                Navigation.replaceFragment(Navigation.getActivity(view),new DashboardFragment(),false);
             }
             else if (message.contentEquals("1111")) {
                 User user = new User("Tej","Manager", ImageConvertor.convertPNGBitmapToByteArray(BitmapFactory.decodeResource(view.getContext().getResources(),R.mipmap.manager)));
                 Constant.userRole = "Manager";
-                Navigation.replaceFragment(Navigation.getActivity(view),new DashboardFragment());
+                Navigation.getActivity(view).configureUserInfo(user,R.mipmap.manager);
+                Navigation.replaceFragment(Navigation.getActivity(view),new DashboardFragment(),false);
             }
             else {
                 Utills.showToast( "Invalid Password", view.getContext());

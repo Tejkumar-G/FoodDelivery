@@ -30,8 +30,27 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
             tools:listitem="@layout/category_item" />
+        <ImageView
+            android:id="@+id/iv_menu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_menu"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="12dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:text="Quick Service"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:paddingStart="56dp"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/title"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_list"

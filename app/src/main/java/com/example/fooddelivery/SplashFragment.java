@@ -59,7 +59,7 @@ public class SplashFragment extends Fragment {
             startSplashTimer();
         } else {
             new Handler().postDelayed(() -> {
-                Navigation.replaceFragment(getActivity(),new LoginFragment());
+                Navigation.replaceFragment(getActivity(),new LoginFragment(),false);
             }, 2000);
         }
     }
@@ -69,7 +69,7 @@ public class SplashFragment extends Fragment {
         Runnable update = () -> {
             if ( currentPage == images.size() ) {
 //                replaceFragment(new ImageFragment());
-                Navigation.replaceFragment(getActivity(),new LoginFragment());
+                Navigation.replaceFragment(getActivity(),new LoginFragment(),false);
             }
             viewPager.setCurrentItem(currentPage++, true);
         };
