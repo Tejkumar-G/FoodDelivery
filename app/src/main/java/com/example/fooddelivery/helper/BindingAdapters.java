@@ -7,7 +7,12 @@ import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.fooddelivery.checkout.CheckoutAdapter;
+import com.example.fooddelivery.checkout.CheckoutViewModel;
 import com.example.fooddelivery.dashboard.ItemCategoriesAdaptor;
+import com.example.fooddelivery.db.order.OrderItem;
+
+import java.util.List;
 
 
 public class BindingAdapters {
@@ -24,4 +29,11 @@ public class BindingAdapters {
                 .dontAnimate()
                 .into(imageView);
     }
+
+    @BindingAdapter({"addCheckoutAdapter"})
+    public static void addCheckoutAdapter(RecyclerView recyclerView, CheckoutViewModel checkoutViewModel) {
+        if (recyclerView.getAdapter()!=null)
+            recyclerView.setAdapter(new CheckoutAdapter(checkoutViewModel.orderItemList));
+    }
+
 }

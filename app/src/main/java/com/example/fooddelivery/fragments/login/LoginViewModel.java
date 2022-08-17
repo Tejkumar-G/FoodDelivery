@@ -9,6 +9,7 @@ import androidx.databinding.Bindable;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.dashboard.DashboardFragment;
 import com.example.fooddelivery.db.user.User;
+import com.example.fooddelivery.db.user.UserRepository;
 import com.example.fooddelivery.helper.Constant;
 import com.example.fooddelivery.helper.ImageConvertor;
 import com.example.fooddelivery.helper.Navigation;
@@ -31,6 +32,7 @@ public class LoginViewModel extends BaseObservable {
         if (!message.isEmpty())  {
             if (message.contentEquals("1234")) {
                 User user = new User("Dola","Server", ImageConvertor.convertPNGBitmapToByteArray(BitmapFactory.decodeResource(view.getContext().getResources(), R.mipmap.server)));
+                Constant.userName = "";
                 Constant.userRole = "Server";
                 Navigation.getActivity(view).configureUserInfo(user,R.mipmap.server);
                 Navigation.replaceFragment(Navigation.getActivity(view),new DashboardFragment(),false);

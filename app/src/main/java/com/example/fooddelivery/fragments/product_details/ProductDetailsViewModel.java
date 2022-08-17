@@ -12,7 +12,6 @@ import com.example.fooddelivery.db.order.OrderItem;
 import com.example.fooddelivery.db.order.OrderRepository;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.helper.Utills;
-import com.example.fooddelivery.helper.ValueObservable;
 
 import java.util.Objects;
 import java.util.Timer;
@@ -65,6 +64,8 @@ public class ProductDetailsViewModel extends BaseObservable {
     }
 
     public void addItem() {
+        if (Integer.parseInt(totalItems) >= 30)
+            return;
         updateValue(true);
     }
 

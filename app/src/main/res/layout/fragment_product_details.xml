@@ -5,7 +5,6 @@
 
     <data>
         <import type="android.view.View"/>
-        <import type="com.example.fooddelivery.helper.BindingAdapters"/>
         <variable
             name="model"
             type="com.example.fooddelivery.fragments.product_details.ProductDetailsViewModel" />
