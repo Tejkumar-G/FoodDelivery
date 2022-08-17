@@ -51,8 +51,11 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.frameLayout, mFragment).commit();
+        if (foodRepository.getAllFoodItem().size() == 0)
+            setFoodData();
+        else {
 
-        setFoodData();
+        }
     }
 
     void setFoodData() {

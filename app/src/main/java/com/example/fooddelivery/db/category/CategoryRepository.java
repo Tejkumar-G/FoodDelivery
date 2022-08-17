@@ -12,14 +12,13 @@ public class CategoryRepository {
 
 
     public CategoryDao categoryDao;
-    private List<Category> userList;
 
     public CategoryRepository(Context application) {
         FoodDatabase db = FoodDatabase.getInstance(application);
         categoryDao = db.categoryDao();
     }
 
-    public List<User> getAllCategoryItems() {
+    public List<Category> getAllCategoryItems() {
         return categoryDao.getAllCategoryItems();
     }
 

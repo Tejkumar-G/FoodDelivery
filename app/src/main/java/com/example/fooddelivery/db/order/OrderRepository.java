@@ -1,6 +1,7 @@
 package com.example.fooddelivery.db.order;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.fooddelivery.db.FoodDatabase;
@@ -12,7 +13,7 @@ public class OrderRepository {
     public OrderDao orderDao;
     private List<OrderItem> orderItemList;
 
-    public OrderRepository(Application application) {
+    public OrderRepository(Context application) {
         FoodDatabase db = FoodDatabase.getInstance(application);
         orderDao = db.orderDao();
     }

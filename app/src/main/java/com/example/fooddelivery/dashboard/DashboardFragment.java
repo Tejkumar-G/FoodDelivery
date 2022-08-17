@@ -29,7 +29,6 @@ public class DashboardFragment extends Fragment {
         mViewModel = new ViewModelProvider(requireActivity()).get(DashboardViewModel.class);
         FragmentDashboardBinding binding = FragmentDashboardBinding.inflate(inflater, container, false);
         binding.setViewModel(mViewModel);
-        BindingAdapters.addAdapter(binding.getRoot().findViewById(R.id.category_list), mViewModel.getCategoryAdaptor());
         binding.setLifecycleOwner(this);
         return binding.getRoot();
 //        return inflater.inflate(R.layout.fragment_dashboard, container, false);
@@ -46,19 +45,15 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        mViewModel.getCategories(requireContext());
+        mViewModel.displayProducts(mViewModel.categoryDataList.get(0), view.getContext());
 
-        mViewModel.displayProducts(mViewModel.categoryDataList.get(0));
-
-//        RecyclerView categoryView = view.findViewById(R.id.category_list);
+        RecyclerView categoryView = view.findViewById(R.id.category_list);
         RecyclerView productsView = view.findViewById(R.id.product_list);
 
-//        CardView category = view.findViewById(R.id.category_card);
-//
-//        category.setOnClickListener(o -> {
-//
-//        });
+        categoryView.setAdapter(mViewModel.getCategoryAdaptor());
 
-//
+
 //        categoryView.setAdapter(mViewModel.categoryAdaptor);
         productsView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         mViewModel.productAdaptor.observe(getViewLifecycleOwner(), new Observer<ProductsListAdaptor>() {

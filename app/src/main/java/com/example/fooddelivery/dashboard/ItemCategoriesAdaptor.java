@@ -1,6 +1,5 @@
 package com.example.fooddelivery.dashboard;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.fooddelivery.R;
+import com.example.fooddelivery.db.category.Category;
 
 import java.util.List;
 
 public class ItemCategoriesAdaptor extends RecyclerView.Adapter<ItemCategoriesAdaptor.ViewHolder> {
-    List<CategoryData> list;
+    List<Category> list;
     CategoryListener categoryListener;
 
-    public ItemCategoriesAdaptor(List<CategoryData> list, CategoryListener listener) {
+    public ItemCategoriesAdaptor(List<Category> list, CategoryListener listener) {
         this.list = list;
         this.categoryListener = listener;
     }
@@ -36,13 +36,13 @@ public class ItemCategoriesAdaptor extends RecyclerView.Adapter<ItemCategoriesAd
     public void onBindViewHolder(final ViewHolder viewHolder,
                      final int position) {
         Glide.with(viewHolder.view.getContext())
-                .load(list.get(position).imageUrl)
+                .load(list.get(position).getImageUrl())
                 .dontAnimate()
                 .into(viewHolder.categoryImage);
 
-        viewHolder.categoryName.setText(list.get(position).categoryName);
+        viewHolder.categoryName.setText(list.get(position).getFoodName());
         viewHolder.cardView.setOnClickListener(view -> {
-            categoryListener.onClick(list.get(position));
+            categoryListener.onClick(list.get(position), view);
         });
     }
 
@@ -54,11 +54,11 @@ public class ItemCategoriesAdaptor extends RecyclerView.Adapter<ItemCategoriesAd
 
     @Override
     public void onAttachedToRecyclerView(
-            RecyclerView recyclerView) {
+            @NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         View view;
         ImageView categoryImage;
         TextView categoryName;
