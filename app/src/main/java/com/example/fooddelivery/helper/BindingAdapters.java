@@ -32,7 +32,7 @@ public class BindingAdapters {
 
     @BindingAdapter({"addCheckoutAdapter"})
     public static void addCheckoutAdapter(RecyclerView recyclerView, CheckoutViewModel checkoutViewModel) {
-        if (recyclerView.getAdapter()!=null)
+        if (recyclerView.getAdapter()==null)
             recyclerView.setAdapter(new CheckoutAdapter(checkoutViewModel.orderItemList));
     }
 

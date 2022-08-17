@@ -16,6 +16,8 @@ public class OrderItem {
 
     String category;
 
+    int foodId;
+
     double foodPrice;
 
     private String imageUrl;
@@ -27,6 +29,7 @@ public class OrderItem {
     public OrderItem(
             String fName,
             double fPrice,
+            int foodId,
             String category,
             String fImageName,
             String transactionId,
@@ -35,6 +38,7 @@ public class OrderItem {
     ) {
         this.foodName = fName;
         this.foodPrice = fPrice;
+        this.foodId = foodId;
         this.category = category;
         this.imageName = fImageName;
         this.imageUrl = imageUrl;
@@ -46,6 +50,13 @@ public class OrderItem {
 
     }
 
+    public int getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(int foodId) {
+        this.foodId = foodId;
+    }
 
     public int getId() {
         return id;

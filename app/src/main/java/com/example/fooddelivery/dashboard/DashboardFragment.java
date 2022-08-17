@@ -95,7 +95,7 @@ public class DashboardFragment extends Fragment {
         noOfItemsTV.setText( orderItemList.size()+ " Items");
         double price = 0;
         for (OrderItem orderItem : orderItemList) {
-            price += orderItem.getFoodPrice();
+            price += (orderItem.getFoodPrice()*orderItem.getQty());
         }
         priceTV.setText("$" + price);
         return orderItemList.size() != 0;

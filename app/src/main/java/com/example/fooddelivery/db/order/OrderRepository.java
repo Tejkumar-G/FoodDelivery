@@ -32,6 +32,10 @@ public class OrderRepository {
         return orderDao.getOrderItemBasedOnTransactionID(transactionId);
     }
 
+    public List<OrderItem> getOrderedItemsBasedOnFoodIdAndTransactionId(int foodId,String transactionId) {
+        return orderDao.getOrderItemBasedOnFoodIdAndtxid(foodId,transactionId);
+    }
+
     public void addOrderedItem(OrderItem order) {
 
         new InsertOrderedData(orderDao).execute(order);

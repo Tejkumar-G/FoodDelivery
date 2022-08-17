@@ -36,4 +36,7 @@ public interface OrderDao {
     @Query("SELECT * FROM order_table Where transactionId = :transactionId ORDER BY foodName ASC")
     List<OrderItem> getOrderItemBasedOnTransactionID(String transactionId);
 
+    @Query("SELECT * FROM order_table Where transactionId = :transactionId AND foodId = :foodId ORDER BY foodName ASC")
+    List<OrderItem> getOrderItemBasedOnFoodIdAndtxid(int foodId,String transactionId);
+
 }

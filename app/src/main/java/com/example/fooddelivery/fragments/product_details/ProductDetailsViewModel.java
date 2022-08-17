@@ -13,6 +13,7 @@ import com.example.fooddelivery.db.order.OrderRepository;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.helper.Utills;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -102,16 +103,14 @@ public class ProductDetailsViewModel extends BaseObservable {
     void addItem(Context context) {
         OrderRepository orderRepository = new OrderRepository(context);
 
-
-        OrderItem orderItem = new OrderItem(food.getFoodName(), food.getFoodPrice(), food.getCategory(), food.getImageName(), "", food.getImageUrl(), Integer.parseInt(totalItems));
-
-        orderRepository.deleteORDER(orderItem);
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                orderRepository.addOrderedItem(orderItem);
-            }
-        }, 2000);
+        List<OrderItem> itemList = orderRepository.getOrderedItemsBasedOnFoodIdAndTransactionId(food.getId(),"");
+        OrderItem orderItem = new OrderItem(food.getFoodName(), food.getFoodPrice(),food.getId(), food.getCategory(), food.getImageName(), "", food.getImageUrl(), Integer.parseInt(totalItems));
+        if(itemList.isEmpty())
+            orderRepository.addOrderedItem(orderItem);
+        else {
+            orderItem.setId(itemList.get(0).getId());
+            orderRepository.addOrderedItem(orderItem);
+        }
 
     }
 }

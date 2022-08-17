@@ -8,13 +8,14 @@ import androidx.databinding.Bindable;
 import com.example.fooddelivery.db.order.OrderItem;
 import com.example.fooddelivery.db.order.OrderRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CheckoutViewModel extends BaseObservable {
     String subTotal;
     String tax;
     String total;
-    public List<OrderItem> orderItemList;
+    public List<OrderItem> orderItemList = new ArrayList<>();
 
 
 
@@ -49,14 +50,13 @@ public class CheckoutViewModel extends BaseObservable {
     public void getOrderItems(Context context) {
         OrderRepository orderRepository = new OrderRepository(context);
         orderItemList = orderRepository.getAllOrderedItems();
-
         setValues(orderItemList);
     }
 
     private void setValues(List<OrderItem> orderItemList) {
         double subtotalInteger = 0;
         for (OrderItem orderItem : orderItemList) {
-            subtotalInteger += orderItem.getFoodPrice();
+            subtotalInteger += (orderItem.getFoodPrice()*orderItem.getQty());
         }
         subTotal = subtotalInteger + "";
         tax = subtotalInteger / 100 * 8.25 + "";
