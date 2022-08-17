@@ -12,15 +12,14 @@ public class Category {
 
     String foodName;
 
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    private byte[] image;
+    private String imageUrl;
 
     public Category(
             String fName,
-            byte[] imageByte
+            String imageUrl
     ) {
         this.foodName = fName;
-        this.image = imageByte;
+        this.imageUrl = imageUrl;
     }
 
     public Category() {
@@ -43,13 +42,12 @@ public class Category {
         this.foodName = foodName;
     }
 
-    public byte[] getImage() {
-        return image;
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
-
-
 }

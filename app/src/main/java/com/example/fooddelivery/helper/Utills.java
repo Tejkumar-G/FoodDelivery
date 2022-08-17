@@ -16,24 +16,20 @@ public class Utills {
    public static List<Food> getFoodList(Context context) {
 
         List<Food> foodList = new ArrayList<>();
-        Bitmap singleBurger = BitmapFactory.decodeResource(context.getResources(), R.mipmap.singleburger);
-        Bitmap bugerCombo = BitmapFactory.decodeResource(context.getResources(), R.mipmap.comboburger);
-        Bitmap hamBuger = BitmapFactory.decodeResource(context.getResources(), R.mipmap.hamburger);
-        Food food = new Food("Single Burger", 200, "Burger", "cheeseburger.png", ImageConvertor.convertPNGBitmapToByteArray(singleBurger));
+
+        Food food = new Food("Single Burger", 200, "Burger", "cheeseburger.png","");
         foodList.add(food);
-        Food food1 = new Food("Burger Combo", 150, "Burger", "pizza.png", ImageConvertor.convertPNGBitmapToByteArray(bugerCombo));
+        Food food1 = new Food("Burger Combo", 150, "Burger", "pizza.png", "");
         foodList.add(food1);
-        Food food2 = new Food("Burger Chicken", 150, "Burger", "pizza.png", ImageConvertor.convertPNGBitmapToByteArray(hamBuger));
+        Food food2 = new Food("Burger Chicken", 150, "Burger", "pizza.png", "");
         foodList.add(food2);
 
-        Bitmap chocolateMs = BitmapFactory.decodeResource(context.getResources(), R.mipmap.chocolate_ms);
-        Bitmap mangoMs = BitmapFactory.decodeResource(context.getResources(), R.mipmap.mango_ms);
-        Bitmap strawberry = BitmapFactory.decodeResource(context.getResources(), R.mipmap.staberry_ms);
-        Food food3 = new Food("Chocolate MilkShake", 220, "MilkShake", "Chocolate.png", ImageConvertor.convertPNGBitmapToByteArray(chocolateMs));
+
+        Food food3 = new Food("Chocolate MilkShake", 220, "MilkShake", "Chocolate.png", "");
         foodList.add(food3);
-        Food food4 = new Food("Mango MilkShake", 170, "MilkShake", "Mango.png", ImageConvertor.convertPNGBitmapToByteArray(mangoMs));
+        Food food4 = new Food("Mango MilkShake", 170, "MilkShake", "Mango.png", "");
         foodList.add(food4);
-        Food food5 = new Food("Strawberry MilkShake", 190, "MilkShake", "Strawberry.png", ImageConvertor.convertPNGBitmapToByteArray(strawberry));
+        Food food5 = new Food("Strawberry MilkShake", 190, "MilkShake", "Strawberry.png","");
         foodList.add(food5);
 
         return foodList;
@@ -43,13 +39,11 @@ public class Utills {
      public static List<Category> getCategoryList(Context context) {
 
           List<Category> foodList = new ArrayList<>();
-          Bitmap singleBurger = BitmapFactory.decodeResource(context.getResources(), R.mipmap.singleburger);
-          Category food = new Category( "Burger", ImageConvertor.convertPNGBitmapToByteArray(singleBurger));
+
+          Category food = new Category( "Burger","");
           foodList.add(food);
 
-
-          Bitmap chocolateMs = BitmapFactory.decodeResource(context.getResources(), R.mipmap.chocolate_ms);
-          Category food3 = new Category( "MilkShake", ImageConvertor.convertPNGBitmapToByteArray(chocolateMs));
+          Category food3 = new Category( "MilkShake", "");
           foodList.add(food3);
 
 

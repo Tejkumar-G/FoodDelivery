@@ -1,11 +1,11 @@
-package com.example.fooddelivery.db;
+package com.example.fooddelivery.db.order;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "food_table")
-public class Food {
+@Entity(tableName = "order_table")
+public class OrderItem {
+
 
     @PrimaryKey(autoGenerate = true)
     int id;
@@ -18,24 +18,32 @@ public class Food {
 
     double foodPrice;
 
-
     private String imageUrl;
 
-    public Food(
+    String transactionId;
+
+    int qty;
+
+    public OrderItem(
             String fName,
             double fPrice,
             String category,
             String fImageName,
-            String imageUrl
+            byte[] imageByte,
+            String transactionId,
+            String imageUrl,
+            int qty
     ) {
         this.foodName = fName;
         this.foodPrice = fPrice;
         this.category = category;
         this.imageName = fImageName;
         this.imageUrl = imageUrl;
+        this.transactionId = transactionId;
+        this.qty = qty;
     }
 
-    public Food() {
+    public OrderItem() {
 
     }
 
@@ -86,5 +94,21 @@ public class Food {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 }
