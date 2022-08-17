@@ -10,12 +10,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.db.Food;
+import com.example.fooddelivery.db.order.OrderItem;
 import com.example.fooddelivery.db.order.OrderRepository;
 import com.example.fooddelivery.helper.Navigation;
 
@@ -54,6 +56,8 @@ public class ProductDetailsFragment extends Fragment {
         TextView addValue = view.findViewById(R.id.right_rectangle);
         TextView crossMark = view.findViewById(R.id.cross_mark);
 
+        Button addItem = view.findViewById(R.id.add_item);
+
         addValue.setOnClickListener(v -> {
             updateValue(true);
         });
@@ -65,7 +69,11 @@ public class ProductDetailsFragment extends Fragment {
         });
 
         crossMark.setOnClickListener(v -> {
-//            Navigation.goBackScreen(requireActivity(), this);
+            Navigation.goBackScreen(requireActivity(), this);
+        });
+
+        addItem.setOnClickListener(v -> {
+            addItem();
         });
     }
 
@@ -73,5 +81,16 @@ public class ProductDetailsFragment extends Fragment {
         totalItems = increment ? totalItems+1 : totalItems-1;
         value.setText(""+totalItems);
         total.setText("$"+ (totalItems*food.getFoodPrice()));
+    }
+
+    void addItem() {
+        OrderRepository orderRepository = new OrderRepository(requireContext());
+
+        OrderItem orderItem = new OrderItem();
+        orderItem.setCategory(food.getCategory());
+        orderItem.setFoodName(food.getFoodName());
+        orderItem.setImageName(food.getImageName());
+        orderItem.setQty(totalItems);
+        orderRepository.addOrderedItem(orderItem);
     }
 }
