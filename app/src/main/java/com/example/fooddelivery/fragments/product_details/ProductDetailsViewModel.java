@@ -81,13 +81,12 @@ public class ProductDetailsViewModel extends BaseObservable {
 
     void checkForItemDetails(Context context) {
         OrderRepository orderRepository = new OrderRepository(context);
-        int items = 0;
-        for (OrderItem orderItem : orderRepository.getAllOrderedItems()) {
-            if (orderItem.getFoodName().equals(food.getFoodName())) {
-                items++;
-            }
+        List<OrderItem> itemList = orderRepository.getOrderedItemsBasedOnFoodIdAndTransactionId(food.getId(), Constant.userName);
+        if (itemList.size()>0) {
+            totalItems = itemList.get(0).getQty() + "";
+        } else {
+            totalItems = "0";
         }
-        totalItems = items + "";
         updatePrice();
     }
 
@@ -106,11 +105,16 @@ public class ProductDetailsViewModel extends BaseObservable {
 
         List<OrderItem> itemList = orderRepository.getOrderedItemsBasedOnFoodIdAndTransactionId(food.getId(), Constant.userName);
         OrderItem orderItem = new OrderItem(food.getFoodName(), food.getFoodPrice(),food.getId(), food.getCategory(), food.getImageName(), Constant.userName, food.getImageUrl(), Integer.parseInt(totalItems));
-        if(itemList.isEmpty())
-            orderRepository.addOrderedItem(orderItem);
-        else {
-            orderItem.setId(itemList.get(0).getId());
-            orderRepository.addOrderedItem(orderItem);
+        if(itemList.isEmpty()) {
+            if(Integer.parseInt(totalItems)>0)
+                orderRepository.addOrderedItem(orderItem);
+        } else {
+            if(Integer.parseInt(totalItems)>0) {
+                orderItem.setId(itemList.get(0).getId());
+                orderRepository.addOrderedItem(orderItem);
+            } else {
+                orderRepository.deleteORDER(orderItem);
+            }
         }
 
     }
