@@ -43,14 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         List<byte[]> images = splashImageRepository.getAllFoodItem();
-        if (images.size() > 0) {
-            mFragment = new SplashFragment(images);
-        } else {
-            mFragment = new SettingFragment();
-        }
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, mFragment).commit();
+                .replace(R.id.frameLayout, new SplashFragment(images)).commit();
 
         setFoodData();
     }

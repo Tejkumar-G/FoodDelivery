@@ -1,6 +1,5 @@
 package com.example.fooddelivery.dashboard;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.helper.Navigation;
-import com.example.fooddelivery.product_details.ProductDetailsFragment;
+import com.example.fooddelivery.fragments.product_details.ProductDetailsFragment;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.fooddelivery.product_details;
+package com.example.fooddelivery.fragments.product_details;
 
 import android.os.Bundle;
 
