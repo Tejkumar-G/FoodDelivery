@@ -12,6 +12,12 @@ import com.example.fooddelivery.db.splash.SplashImageRepository;
 
 import java.util.List;
 
+import com.example.fooddelivery.dashboard.DashboardFragment;
+import com.example.fooddelivery.product_details.ProductDetailsFragment;
+
+
+
+//@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
 //    FoodRepository fr;

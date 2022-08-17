@@ -14,6 +14,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 
+import com.example.fooddelivery.dashboard.DashboardFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -61,7 +63,8 @@ public class SplashFragment extends Fragment {
         Handler handler = new Handler();
         Runnable update = () -> {
             if ( currentPage == images.size() ) {
-                replaceFragment(new ImageFragment());
+//                replaceFragment(new ImageFragment());
+                replaceFragment(new DashboardFragment());
             }
             viewPager.setCurrentItem(currentPage++, true);
         };

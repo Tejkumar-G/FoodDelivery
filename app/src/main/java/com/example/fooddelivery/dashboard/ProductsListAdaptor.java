@@ -1,35 +1,40 @@
-package com.example.fooddelivery;
+package com.example.fooddelivery.dashboard;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fooddelivery.R;
+
 import java.util.List;
 
 public class ProductsListAdaptor extends RecyclerView.Adapter<ProductsListAdaptor.ViewHolder> {
-    List<String> list;
-    Context context;
+    List<ProductData> list;
 
-    public ProductsListAdaptor(List<String> list,
-                                 Context context, CategoryListener listener) {
+    public ProductsListAdaptor(List<ProductData> list, ProductClickListener listener) {
         this.list = list;
-        this.context = context;
     }
 
     @NonNull
     @Override
     public ProductsListAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item, parent, false);
         return new ProductsListAdaptor.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ProductsListAdaptor.ViewHolder viewHolder,
                                  final int position) {
+
+        viewHolder.productImage.setImageResource(list.get(position).image);
+        viewHolder.productName.setText(list.get(position).productName);
+        viewHolder.productPrice.setText(list.get(position).productPrice);
 
     }
 
@@ -47,9 +52,16 @@ public class ProductsListAdaptor extends RecyclerView.Adapter<ProductsListAdapto
 
     class ViewHolder extends RecyclerView.ViewHolder {
         View view;
+        ImageView productImage;
+        TextView productName;
+        TextView productPrice;
         ViewHolder(View view) {
             super(view);
             this.view = view;
+
+            productImage = view.findViewById(R.id.product_image);
+            productName = view.findViewById(R.id.product_name);
+            productPrice = view.findViewById(R.id.product_price);
         }
 
     }
