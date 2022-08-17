@@ -36,12 +36,14 @@ public class LoginViewModel extends BaseObservable {
                 Constant.userRole = "Server";
                 Navigation.getActivity(view).configureUserInfo(user,R.mipmap.server);
                 Navigation.replaceFragment(Navigation.getActivity(view),new DashboardFragment(),false);
+                Utills.closeKeyboard(view);
             }
             else if (message.contentEquals("1111")) {
                 User user = new User("Tej","Manager", ImageConvertor.convertPNGBitmapToByteArray(BitmapFactory.decodeResource(view.getContext().getResources(),R.mipmap.manager)));
                 Constant.userRole = "Manager";
                 Navigation.getActivity(view).configureUserInfo(user,R.mipmap.manager);
                 Navigation.replaceFragment(Navigation.getActivity(view),new DashboardFragment(),false);
+                Utills.closeKeyboard(view);
             }
             else {
                 Utills.showToast( "Invalid Password", view.getContext());

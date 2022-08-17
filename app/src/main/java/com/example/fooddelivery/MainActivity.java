@@ -21,8 +21,10 @@ import com.example.fooddelivery.db.category.Category;
 import com.example.fooddelivery.db.category.CategoryRepository;
 import com.example.fooddelivery.db.splash.SplashImageRepository;
 import com.example.fooddelivery.db.user.User;
+import com.example.fooddelivery.fragments.login.LoginFragment;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.helper.Utills;
+import com.example.fooddelivery.transactions.TransactionsFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -58,6 +60,16 @@ public class MainActivity extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.nav_gallery).setOnMenuItemClickListener(menuItem -> {
             closeDrawer();
             Navigation.replaceFragment(this,new SettingFragment());
+            return false;
+        });
+        navigationView.getMenu().findItem(R.id.nav_transactions).setOnMenuItemClickListener(menuItem -> {
+            closeDrawer();
+            Navigation.replaceFragment(this,new TransactionsFragment());
+            return false;
+        });
+        navigationView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(menuItem -> {
+            closeDrawer();
+            Navigation.replaceFragment(this,new LoginFragment(), false);
             return false;
         });
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
