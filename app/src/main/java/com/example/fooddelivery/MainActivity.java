@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         categoryRepository = new CategoryRepository(getApplication());
 
 
-        List<byte[]> images = splashImageRepository.getAllFoodItem();
+        List<byte[]> images = splashImageRepository.getAllImageData();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.frameLayout, new SplashFragment(images)).commit();
