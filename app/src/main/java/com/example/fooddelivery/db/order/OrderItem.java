@@ -29,7 +29,6 @@ public class OrderItem {
             double fPrice,
             String category,
             String fImageName,
-            byte[] imageByte,
             String transactionId,
             String imageUrl,
             int qty

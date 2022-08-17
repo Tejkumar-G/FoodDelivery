@@ -1,6 +1,7 @@
 package com.example.fooddelivery.db;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public class FoodRepository {
     public FoodDao foodDao;
     private List<Food> food;
 
-    public FoodRepository(Application application) {
+    public FoodRepository(Context application) {
         FoodDatabase db = FoodDatabase.getInstance(application);
         foodDao = db.foodDao();
     }

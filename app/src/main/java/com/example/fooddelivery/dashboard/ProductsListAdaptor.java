@@ -11,15 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.fooddelivery.R;
+import com.example.fooddelivery.db.Food;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.fragments.product_details.ProductDetailsFragment;
 
 import java.util.List;
 
 public class ProductsListAdaptor extends RecyclerView.Adapter<ProductsListAdaptor.ViewHolder> {
-    List<ProductData> list;
+    List<Food> list;
 
-    public ProductsListAdaptor(List<ProductData> list, ProductClickListener listener) {
+    public ProductsListAdaptor(List<Food> list, ProductClickListener listener) {
         this.list = list;
     }
 
@@ -35,14 +36,14 @@ public class ProductsListAdaptor extends RecyclerView.Adapter<ProductsListAdapto
                                  final int position) {
 
         Glide.with(viewHolder.view.getContext())
-                .load(list.get(position).imageUrl)
+                .load(list.get(position).getImageUrl())
                 .dontAnimate()
                 .into(viewHolder.productImage);
 
-        viewHolder.productName.setText(list.get(position).productName);
-        viewHolder.productPrice.setText(list.get(position).productPrice);
+        viewHolder.productName.setText(list.get(position).getFoodName());
+        viewHolder.productPrice.setText("$" + list.get(position).getFoodPrice());
         viewHolder.itemView.setOnClickListener(view -> {
-            Navigation.replaceFragment(Navigation.getActivity(view),new ProductDetailsFragment());
+            Navigation.replaceFragment(Navigation.getActivity(view),new ProductDetailsFragment(list.get(position)));
         });
 
     }

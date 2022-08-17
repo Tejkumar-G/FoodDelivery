@@ -28,6 +28,8 @@ public class Navigation {
         fragmentTransaction.commit();
     }
 
+
+
     public static void addFragment(FragmentActivity activity,Fragment fragment){
         addFragment(activity,fragment, true);
     }
@@ -35,6 +37,12 @@ public class Navigation {
     public static void replaceFragment(FragmentActivity activity, Fragment fragment){
         replaceFragment(activity,fragment, true);
     }
+
+//    public static void goBackScreen(FragmentActivity activity, Fragment fragment) {
+//        activity.getSupportFragmentManager().beginTransaction()
+//                .addToBackStack(null)
+//                .commit();
+//    }
 
     public static MainActivity getActivity(View view) {
         if(view.getContext() instanceof MainActivity)

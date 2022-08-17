@@ -23,6 +23,6 @@ public interface CategoryDao {
     void updateCategoryData(Category category);
 
     @Query("SELECT * FROM category_table ORDER BY foodName ASC")
-    List<User> getAllCategoryItems();
+    List<Category> getAllCategoryItems();
 
 }

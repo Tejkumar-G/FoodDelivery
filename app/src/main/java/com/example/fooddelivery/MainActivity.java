@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction()
                 .replace(R.id.frameLayout, new SplashFragment(images)).commit();
 
-        setFoodData();
+        if (foodRepository.getAllFoodItem().size() == 0)
+            setFoodData();
     }
 
     void setFoodData() {
