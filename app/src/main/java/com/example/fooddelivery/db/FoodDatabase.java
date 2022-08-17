@@ -7,10 +7,13 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.fooddelivery.db.category.CategoryDao;
 import com.example.fooddelivery.db.splash.SplashImage;
 import com.example.fooddelivery.db.splash.SplashImageDao;
+import com.example.fooddelivery.db.user.User;
+import com.example.fooddelivery.db.user.UserDao;
 
-@Database(entities = {Food.class, SplashImage.class}, version = 1)
+@Database(entities = {Food.class, SplashImage.class, User.class}, version = 2)
 abstract public class FoodDatabase extends RoomDatabase {
 
 
@@ -20,6 +23,10 @@ abstract public class FoodDatabase extends RoomDatabase {
     // abstract variable for dao.
     public abstract FoodDao foodDao();
     public abstract SplashImageDao splashImageDao();
+
+    public abstract UserDao userDao();
+
+    public abstract CategoryDao categoryDao();
 
     // on below line we are getting instance for our database.
     public static synchronized FoodDatabase getInstance(Context context) {

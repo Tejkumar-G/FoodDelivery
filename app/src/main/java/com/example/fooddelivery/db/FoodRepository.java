@@ -10,13 +10,17 @@ public class FoodRepository {
     public FoodDao foodDao;
     private List<Food> food;
 
-     public FoodRepository(Application application) {
+    public FoodRepository(Application application) {
         FoodDatabase db = FoodDatabase.getInstance(application);
         foodDao = db.foodDao();
     }
 
-   public List<Food> getAllFoodItem() {
+    public List<Food> getAllFoodItem() {
         return foodDao.getAllFoodItem();
+    }
+
+    public List<Food> getFoodDataBasedOnCategory(String category) {
+        return foodDao.getFoodDataBasedOnCategory(category);
     }
 
     public void addFoodData(Food food) {

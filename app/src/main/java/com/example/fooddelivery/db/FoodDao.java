@@ -26,4 +26,7 @@ interface FoodDao {
     @Query("SELECT * FROM food_table ORDER BY foodName ASC")
     List<Food> getAllFoodItem();
 
+    @Query("SELECT * FROM food_table Where category = :categoryname")
+    List<Food> getFoodDataBasedOnCategory(String categoryname);
+
 }

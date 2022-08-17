@@ -14,20 +14,22 @@ public class Food {
 
     String imageName;
 
+    String category;
+
     double foodPrice;
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     private byte[] image;
 
     public Food(
-            int id,
             String fName,
             double fPrice,
+            String category,
             String fImageName,
             byte[] imageByte
     ) {
-        this.id  = id;
         this.foodName = fName;
         this.foodPrice = fPrice;
+        this.category = category;
         this.imageName = fImageName;
         this.image = imageByte;
     }
@@ -75,5 +77,13 @@ public class Food {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

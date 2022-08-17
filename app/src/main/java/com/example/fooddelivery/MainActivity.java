@@ -7,41 +7,60 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.fooddelivery.db.Food;
 import com.example.fooddelivery.db.FoodRepository;
+import com.example.fooddelivery.db.category.Category;
+import com.example.fooddelivery.db.category.CategoryRepository;
 import com.example.fooddelivery.db.splash.SplashImageRepository;
+import com.example.fooddelivery.helper.Utills;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.example.fooddelivery.dashboard.DashboardFragment;
-import com.example.fooddelivery.product_details.ProductDetailsFragment;
-
-
-
-//@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
-//    FoodRepository fr;
+    FoodRepository foodRepository;
+    CategoryRepository categoryRepository;
     SplashImageRepository splashImageRepository;
 
     Bitmap foodImage;
     Fragment mFragment = null;
+    List<Food> foodList = new ArrayList<>();
+    List<Category> categoryList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Items List Creation
+        foodList = Utills.getFoodList(getApplicationContext());
+        categoryList = Utills.getCategoryList(getApplicationContext());
 
-
-//        Bitmap burger = BitmapFactory.decodeResource(getApplication().getResources(),R.mipmap.cheeseburger);
-//        Bitmap pizza = BitmapFactory.decodeResource(getApplication().getResources(),R.mipmap.pizza);
-//        Food food = new Food(1,"Burger",200,"cheeseburger.png", ImageConvertor.convertBitmapToByteArray(burger));
-//        Food food1 = new Food(2,"Pizza",150,"pizza.png",ImageConvertor.convertBitmapToByteArray(pizza));
-//        fr = new FoodRepository(getApplication());
-
+        //Repository Creation
+        foodRepository = new FoodRepository(getApplication());
         splashImageRepository = new SplashImageRepository(getApplication());
+        categoryRepository = new CategoryRepository(getApplication());
+
+
         List<byte[]> images = splashImageRepository.getAllFoodItem();
+        if (images.size() > 0) {
+            mFragment = new SplashFragment(images);
+        } else {
+            mFragment = new SettingFragment();
+        }
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.frameLayout, new SplashFragment(images)).commit();
+                .replace(R.id.frameLayout, mFragment).commit();
+
+        setFoodData();
+    }
+
+    void setFoodData() {
+        for (int i = 0; i < foodList.size(); i++) {
+            foodRepository.addFoodData(foodList.get(i));
+        }
+        for (int i = 0; i < categoryList.size(); i++) {
+            categoryRepository.addCategoryData(categoryList.get(i));
+        }
     }
 }

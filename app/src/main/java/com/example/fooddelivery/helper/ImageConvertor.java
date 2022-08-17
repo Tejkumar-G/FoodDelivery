@@ -17,5 +17,12 @@ public class ImageConvertor {
         return BitmapFactory.decodeByteArray(imageBytes,0,imageBytes.length);
     }
 
+    public static byte[] convertPNGBitmapToByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
+    }
+
+
 
 }
