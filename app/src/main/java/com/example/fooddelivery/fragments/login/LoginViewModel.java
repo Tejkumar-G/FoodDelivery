@@ -2,20 +2,16 @@ package com.example.fooddelivery.fragments.login;
 
 import android.graphics.BitmapFactory;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.fooddelivery.R;
+import com.example.fooddelivery.dashboard.DashboardFragment;
 import com.example.fooddelivery.db.user.User;
 import com.example.fooddelivery.helper.Constant;
 import com.example.fooddelivery.helper.ImageConvertor;
 import com.example.fooddelivery.helper.Navigation;
-import com.example.fooddelivery.dashboard.DashboardFragment;
 import com.example.fooddelivery.helper.Utills;
 
 

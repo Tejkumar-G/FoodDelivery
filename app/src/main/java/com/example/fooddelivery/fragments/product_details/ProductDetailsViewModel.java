@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
+import com.example.fooddelivery.BR;
 import com.example.fooddelivery.db.Food;
 import com.example.fooddelivery.db.order.OrderItem;
 import com.example.fooddelivery.db.order.OrderRepository;
@@ -20,26 +21,24 @@ import java.util.TimerTask;
 public class ProductDetailsViewModel extends BaseObservable {
 
     Food food;
-    ValueObservable<String> totalItems = new ValueObservable<>();
-    ValueObservable<String> price = new ValueObservable<>();
+    String totalItems = "";
+    String price = "";
     String imageUrl;
 
-    @Bindable
     public String getTotalItems() {
-        return totalItems.value;
+        return totalItems;
     }
 
     public void setTotalItems(String totalItems) {
-        this.totalItems.setValue(totalItems);
+        this.totalItems = totalItems;
     }
 
-    @Bindable
     public String getPrice() {
-        return "$"+price.getValue();
+        return price;
     }
 
     public void setPrice(String price) {
-        this.price.setValue(price);
+        this.price = price;
     }
 
     @Bindable
@@ -70,7 +69,7 @@ public class ProductDetailsViewModel extends BaseObservable {
     }
 
     public void deleteItem() {
-        if (Integer.parseInt(totalItems.getValue()) == 0)
+        if (Integer.parseInt(totalItems) == 0)
             return;
         updateValue(false);
     }
@@ -85,24 +84,25 @@ public class ProductDetailsViewModel extends BaseObservable {
                 items++;
             }
         }
-        totalItems.setValue(items + "");
+        totalItems = items + "";
         updatePrice();
     }
 
     void updateValue(Boolean increment) {
-        totalItems.setValue(increment ? Integer.parseInt(totalItems.getValue()) + 1 + "" : Integer.parseInt(totalItems.getValue()) - 1 + "");
+        totalItems = increment ? Integer.parseInt(totalItems) + 1 + "" : Integer.parseInt(totalItems) - 1 + "";
         updatePrice();
+        notifyPropertyChanged(BR._all);
     }
 
     void updatePrice() {
-        price.setValue(Integer.parseInt(totalItems.getValue()) * food.getFoodPrice() + "");
+        price = Integer.parseInt(totalItems) * food.getFoodPrice() + "";
     }
 
     void addItem(Context context) {
         OrderRepository orderRepository = new OrderRepository(context);
 
 
-        OrderItem orderItem = new OrderItem(food.getFoodName(), food.getFoodPrice(), food.getCategory(), food.getImageName(), "", food.getImageUrl(), Integer.parseInt(totalItems.getValue()));
+        OrderItem orderItem = new OrderItem(food.getFoodName(), food.getFoodPrice(), food.getCategory(), food.getImageName(), "", food.getImageUrl(), Integer.parseInt(totalItems));
 
         orderRepository.deleteORDER(orderItem);
         new Timer().schedule(new TimerTask() {
