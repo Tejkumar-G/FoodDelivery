@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -60,8 +61,9 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ConstraintLayout layout = view.findViewById(R.id.bottom_layout);
+        layout.setVisibility(checkForItems(view)?View.VISIBLE:View.INVISIBLE);
         CardView checkOut = view.findViewById(R.id.check_out);
-        checkOut.setVisibility(checkForItems(view)?View.VISIBLE:View.INVISIBLE);
         checkOut.setOnClickListener(v -> {
             Navigation.replaceFragment(requireActivity(), new CheckoutFragment());
         });

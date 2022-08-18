@@ -16,7 +16,7 @@ public class Food {
 
     String category;
 
-    double foodPrice;
+    public double foodPrice;
 
 
     private String imageUrl;
@@ -56,12 +56,12 @@ public class Food {
         this.foodName = foodName;
     }
 
-    public double getFoodPrice() {
-        return foodPrice;
+    public String getFoodPrice() {
+        return "$" + foodPrice;
     }
 
-    public void setFoodPrice(double foodPrice) {
-        this.foodPrice = foodPrice;
+    public void setFoodPrice(String foodPrice) {
+        this.foodPrice = Integer.parseInt(foodPrice.replace("$", ""));
     }
 
     public String getImageName() {

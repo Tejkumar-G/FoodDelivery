@@ -47,7 +47,7 @@
                 android:id="@+id/product_price"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text='@={product_item.foodPrice +""}'
+                android:text='@={product_item.foodPrice}'
                 android:layout_marginTop="7dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

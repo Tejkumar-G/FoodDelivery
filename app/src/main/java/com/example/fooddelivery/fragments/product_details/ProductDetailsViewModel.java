@@ -97,14 +97,14 @@ public class ProductDetailsViewModel extends BaseObservable {
     }
 
     void updatePrice() {
-        price = Integer.parseInt(totalItems) * food.getFoodPrice() + "";
+        price = Integer.parseInt(totalItems) * food.foodPrice + "";
     }
 
     void addItem(Context context) {
         OrderRepository orderRepository = new OrderRepository(context);
 
         List<OrderItem> itemList = orderRepository.getOrderedItemsBasedOnFoodIdAndTransactionId(food.getId(), Constant.userName);
-        OrderItem orderItem = new OrderItem(food.getFoodName(), food.getFoodPrice(),food.getId(), food.getCategory(), food.getImageName(), Constant.userName, food.getImageUrl(), Integer.parseInt(totalItems));
+        OrderItem orderItem = new OrderItem(food.getFoodName(), food.foodPrice,food.getId(), food.getCategory(), food.getImageName(), Constant.userName, food.getImageUrl(), Integer.parseInt(totalItems));
         if(itemList.isEmpty()) {
             if(Integer.parseInt(totalItems)>0)
                 orderRepository.addOrderedItem(orderItem);
