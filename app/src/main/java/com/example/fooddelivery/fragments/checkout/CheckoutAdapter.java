@@ -1,4 +1,4 @@
-package com.example.fooddelivery.checkout;
+package com.example.fooddelivery.fragments.checkout;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

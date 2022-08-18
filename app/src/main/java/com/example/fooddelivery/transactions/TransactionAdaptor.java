@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fooddelivery.R;
+import com.example.fooddelivery.databinding.TransactionItemBinding;
 import com.example.fooddelivery.db.transaction.Transaction;
 
 import java.util.List;
@@ -23,19 +24,15 @@ public class TransactionAdaptor extends RecyclerView.Adapter<TransactionAdaptor.
     @NonNull
     @Override
     public TransactionAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_item, parent, false);
-        return new TransactionAdaptor.ViewHolder(view);
+        TransactionItemBinding binding = TransactionItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(final TransactionAdaptor.ViewHolder viewHolder,
                                  final int position) {
+        viewHolder.binding.setTransaction(list.get(position));
 
-        viewHolder.userName.setText(list.get(position).getUserName());
-        viewHolder.price.setText(list.get(position).getTotalPrice() + " ");
-        viewHolder.noOfItems.setText(list.size()+"");
-        viewHolder.time.setText(list.get(position).getDate());
-        viewHolder.number.setText(list.get(position).getId() + "");
     }
 
     @Override
@@ -44,25 +41,12 @@ public class TransactionAdaptor extends RecyclerView.Adapter<TransactionAdaptor.
     }
 
 
-    @Override
-    public void onAttachedToRecyclerView(
-            @NonNull RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
-    }
-
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView userName;
-        TextView price;
-        TextView noOfItems;
-        TextView time;
-        TextView number;
-        ViewHolder(View view) {
-            super(view);
-            userName = view.findViewById(R.id.user_name);
-            noOfItems = view.findViewById(R.id.no_of_items);
-            price = view.findViewById(R.id.price);
-            time = view.findViewById(R.id.time);
-            number = view.findViewById(R.id.number);
+        TransactionItemBinding binding;
+
+        ViewHolder(TransactionItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

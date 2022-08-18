@@ -7,18 +7,18 @@
     <data>
 
         <import type="android.view.View" />
-        <import type="com.example.fooddelivery.dashboard.ItemCategoriesAdaptor"/>
+        <import type="com.example.fooddelivery.fragments.dashboard.ItemCategoriesAdaptor"/>
 
         <variable
             name="viewModel"
-            type="com.example.fooddelivery.dashboard.DashboardViewModel" />
+            type="com.example.fooddelivery.fragments.dashboard.DashboardViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_white"
-        tools:context=".dashboard.DashboardFragment">
+        tools:context=".fragments.dashboard.DashboardFragment">
 
 
         <androidx.recyclerview.widget.RecyclerView

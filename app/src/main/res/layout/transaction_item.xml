@@ -1,79 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
-    android:background="@color/white"
-    android:layout_margin="10dp"
-    app:cardElevation="10dp">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="180dp"
-        android:layout_height="180dp">
-        <ImageView
-            android:id="@+id/tick_mark"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/check"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp"
-            app:tint="@color/green" />
-        <TextView
-            android:id="@+id/no_of_items"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="----"
-            android:textSize="21sp"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/tick_mark"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Guest"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/no_of_items"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$3.00"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/user_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:paddingHorizontal="7dp"
-            android:background="@color/background_green"
-            app:layout_constraintBottom_toBottomOf="parent">
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10:16 PM"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
-            <TextView
-                android:id="@+id/number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="00001"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</androidx.cardview.widget.CardView>
+    <data>
+        <variable
+            name="transaction"
+            type="com.example.fooddelivery.db.transaction.Transaction" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:background="@color/white"
+        android:layout_margin="10dp"
+        app:cardElevation="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="180dp"
+            android:layout_height="180dp">
+
+            <ImageView
+                android:id="@+id/tick_mark"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/check"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"
+                app:tint="@color/green" />
+
+            <TextView
+                android:id="@+id/no_of_items"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@={transaction.totalItems+""}'
+                android:textSize="21sp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/tick_mark"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={transaction.userName}"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/no_of_items"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@={transaction.totalPrice}'
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/user_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:paddingHorizontal="7dp"
+                android:background="@color/background_green"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@={transaction.date}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{transaction.id+""}'
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

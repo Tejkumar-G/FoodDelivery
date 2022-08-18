@@ -1,6 +1,5 @@
-package com.example.fooddelivery.dashboard;
+package com.example.fooddelivery.fragments.dashboard;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,16 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fooddelivery.MainActivity;
 import com.example.fooddelivery.R;
-import com.example.fooddelivery.checkout.CheckoutFragment;
 import com.example.fooddelivery.databinding.FragmentDashboardBinding;
-import com.example.fooddelivery.db.category.Category;
+import com.example.fooddelivery.fragments.checkout.CheckoutFragment;
 import com.example.fooddelivery.db.order.OrderItem;
 import com.example.fooddelivery.db.order.OrderRepository;
 import com.example.fooddelivery.helper.BindingAdapters;
@@ -53,6 +49,7 @@ public class DashboardFragment extends Fragment {
         binding.productList.setLayoutManager(new GridLayoutManager(getContext(),2));
         mViewModel.categories.observe(getViewLifecycleOwner(), categories -> {
             BindingAdapters.setCategories(binding.categoryList,mViewModel);
+            mViewModel.loadProducts(categories.get(0), requireContext());
         });
         mViewModel.foodList.observe(getViewLifecycleOwner(), foods ->{
             BindingAdapters.setFoods(binding.productList, foods);

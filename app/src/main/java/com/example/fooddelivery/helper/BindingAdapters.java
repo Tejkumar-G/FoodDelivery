@@ -8,16 +8,14 @@ import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.fooddelivery.checkout.CheckoutAdapter;
-import com.example.fooddelivery.checkout.CheckoutViewModel;
-import com.example.fooddelivery.dashboard.CategoryListener;
-import com.example.fooddelivery.dashboard.DashboardViewModel;
-import com.example.fooddelivery.dashboard.ItemCategoriesAdaptor;
-import com.example.fooddelivery.dashboard.ProductClickListener;
-import com.example.fooddelivery.dashboard.ProductsListAdaptor;
+import com.example.fooddelivery.fragments.checkout.CheckoutAdapter;
+import com.example.fooddelivery.fragments.checkout.CheckoutViewModel;
+import com.example.fooddelivery.fragments.dashboard.CategoryListener;
+import com.example.fooddelivery.fragments.dashboard.DashboardViewModel;
+import com.example.fooddelivery.fragments.dashboard.ItemCategoriesAdaptor;
+import com.example.fooddelivery.fragments.dashboard.ProductsListAdaptor;
 import com.example.fooddelivery.db.Food;
 import com.example.fooddelivery.db.category.Category;
-import com.example.fooddelivery.db.order.OrderItem;
 
 import java.util.List;
 

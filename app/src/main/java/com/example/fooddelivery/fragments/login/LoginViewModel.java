@@ -7,9 +7,8 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.example.fooddelivery.R;
-import com.example.fooddelivery.dashboard.DashboardFragment;
+import com.example.fooddelivery.fragments.dashboard.DashboardFragment;
 import com.example.fooddelivery.db.user.User;
-import com.example.fooddelivery.db.user.UserRepository;
 import com.example.fooddelivery.helper.Constant;
 import com.example.fooddelivery.helper.ImageConvertor;
 import com.example.fooddelivery.helper.Navigation;

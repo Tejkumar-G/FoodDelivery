@@ -64,12 +64,12 @@ public class Transaction {
         this.userRole = userRole;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public String getTotalPrice() {
+        return "$"+totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = Integer.parseInt(totalPrice.replace("$", ""));
     }
 
     public String getDate() {

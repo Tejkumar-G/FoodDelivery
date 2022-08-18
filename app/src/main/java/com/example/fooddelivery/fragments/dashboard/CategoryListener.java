@@ -1,4 +1,4 @@
-package com.example.fooddelivery.dashboard;
+package com.example.fooddelivery.fragments.dashboard;
 
 import android.view.View;
 
