@@ -26,6 +26,12 @@ public interface SplashImageDao {
         @Query("SELECT image FROM image_table ORDER BY id ASC")
         List<byte []> getAllImageItem();
 
+        @Query("SELECT * FROM image_table ORDER BY id ASC")
+        List<SplashImage> getAllSplashScreenData();
+
+        @Query("DELETE FROM image_table WHERE id = :id")
+        void deleteSplashImageData(int id);
+
 
 
 }

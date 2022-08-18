@@ -9,15 +9,22 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fooddelivery.db.splash.SplashImage;
+import com.example.fooddelivery.db.splash.SplashImageRepository;
+import com.example.fooddelivery.helper.ImageConvertor;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageAdapterViewHolder> {
 
-    public List<Bitmap> bitmaps = new ArrayList<>();
+    public List<SplashImage> splashImageList = new ArrayList<>();
+    public SettingFragment settingFragment;
+    public SplashImageRepository splashImageRepository;
 
-    ImageAdapter(List<Bitmap> bitmaps) {
-        this.bitmaps = bitmaps;
+    ImageAdapter(List<SplashImage> splashImageList, SettingFragment settingFragment) {
+        this.splashImageList = splashImageList;
+        this.settingFragment = settingFragment;
     }
     ImageAdapter() {
 
@@ -34,18 +41,31 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageAdapter
 
     @Override
     public void onBindViewHolder(@NonNull ImageAdapter.ImageAdapterViewHolder holder, int position) {
-        Bitmap bitmap = bitmaps.get(position);
-        holder.imageView.setImageBitmap(bitmap);
+        SplashImage splashImage = splashImageList.get(position);
+        holder.imageView.setImageBitmap(ImageConvertor.convertByteArrayToBitmap(splashImage.getImage()));
+        holder.closeImg.setOnClickListener(v->{
+            if (splashImageRepository!=null){
+                splashImageRepository.deleteSplashImageData(splashImage.getId());
+            } else {
+                reploadRepository();
+                splashImageRepository.deleteSplashImageData(splashImage.getId());
+            }
+            settingFragment.reloadSplashImage();
+        });
+    }
+
+    void reploadRepository() {
+        splashImageRepository  = new SplashImageRepository(settingFragment.getActivity());
     }
 
     @Override
     public int getItemCount() {
-        return bitmaps.size();
+        return splashImageList.size();
     }
 
-    public void setImageBitmap(List<Bitmap> bitmap) {
-        bitmaps.clear();
-        bitmaps.addAll(bitmap);
+    public void setSplashImageData(List<SplashImage> splashImageList_) {
+        splashImageList.clear();
+        splashImageList.addAll(splashImageList_);
         notifyDataSetChanged();
     }
 

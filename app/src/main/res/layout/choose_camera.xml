@@ -9,6 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/closePopup"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/close"
+            android:layout_margin="2dp"
+            />
+
         <TextView
             android:id="@+id/instanceTitle"
             android:layout_width="match_parent"

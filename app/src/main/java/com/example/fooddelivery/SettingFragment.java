@@ -75,12 +75,8 @@ public class SettingFragment extends Fragment {
             showImageCaptureOption();
 
         });
-        List<byte[]> images = splashImageRepository.getAllImageData();
-        List<Bitmap> bitmaps_ = new ArrayList<>();
-        for (int i = 0; i < images.size(); i++) {
-            bitmaps_.add(ImageConvertor.convertByteArrayToBitmap(images.get(i)));
-        }
-        imageAdapter = new ImageAdapter(bitmaps_);
+        List<SplashImage> splashScreenData = splashImageRepository.getAllSplashScreenData();
+        imageAdapter = new ImageAdapter(splashScreenData,this);
         recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 3));
         recyclerView.setAdapter(imageAdapter);
 
@@ -98,21 +94,26 @@ public class SettingFragment extends Fragment {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
             String currentDateandTime = sdf.format(new Date());
             byte[] bytes = ImageConvertor.convertBitmapToByteArray(bitmap);
-            Log.d("BytesData", Arrays.toString(bytes));
             SplashImage splashImage = new SplashImage(currentDateandTime, bytes);
             splashImageRepository.addImageData(splashImage);
             Toast.makeText(getContext(), "Please Wait....", Toast.LENGTH_SHORT).show();
             if (imageAdapter != null) {
                 new Handler().postDelayed((Runnable) () -> {
-                    List<byte[]> images = splashImageRepository.getAllImageData();
-                    List<Bitmap> bitmaps = new ArrayList<>();
-                    for (int i = 0; i < images.size(); i++) {
-                        bitmaps.add(ImageConvertor.convertByteArrayToBitmap(images.get(i)));
-                    }
-                    imageAdapter.setImageBitmap(bitmaps);
+                    List<SplashImage> splashScreenData = splashImageRepository.getAllSplashScreenData();
+                    imageAdapter.setSplashImageData(splashScreenData);
                     Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
                 },500);
             }
+        }
+    }
+
+    void reloadSplashImage() {
+        if (imageAdapter != null) {
+            new Handler().postDelayed((Runnable) () -> {
+                List<SplashImage> splashScreenData = splashImageRepository.getAllSplashScreenData();
+                imageAdapter.setSplashImageData(splashScreenData);
+                Toast.makeText(getContext(), "Data Saved", Toast.LENGTH_SHORT).show();
+            },500);
         }
     }
 
@@ -126,6 +127,7 @@ public class SettingFragment extends Fragment {
 
         TextView camera = view.findViewById(R.id.camera);
         TextView gallery = view.findViewById(R.id.gallery);
+        ImageView closePopup = view.findViewById(R.id.closePopup);
 
         //On Click Listener
         camera.setOnClickListener(v1 -> {
@@ -134,6 +136,9 @@ public class SettingFragment extends Fragment {
         });
         gallery.setOnClickListener(v2 -> {
             openGallery();
+            dialog.dismiss();
+        });
+        closePopup.setOnClickListener(v3->{
             dialog.dismiss();
         });
 

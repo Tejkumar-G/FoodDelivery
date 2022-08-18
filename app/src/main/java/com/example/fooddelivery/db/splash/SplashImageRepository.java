@@ -21,6 +21,14 @@ public class SplashImageRepository {
         return splashImageDao.getAllImageItem();
     }
 
+    public List<SplashImage> getAllSplashScreenData() {
+        return splashImageDao.getAllSplashScreenData();
+    }
+
+    public void deleteSplashImageData(int id) {
+        splashImageDao.deleteSplashImageData(id);
+    }
+
     public void addImageData(SplashImage splashImage) {
 
         new InsertImageData(splashImageDao).execute(splashImage);
