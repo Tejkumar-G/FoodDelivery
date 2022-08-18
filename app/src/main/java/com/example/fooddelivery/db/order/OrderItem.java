@@ -82,6 +82,10 @@ public class OrderItem {
         this.foodPrice = foodPrice;
     }
 
+    public String getPriceStr(){
+        return "$"+foodPrice;
+    }
+
     public String getImageName() {
         return imageName;
     }
@@ -120,5 +124,9 @@ public class OrderItem {
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+
+    public String getQtyStr(){
+        return Integer.toString(qty);
     }
 }
