@@ -27,21 +27,29 @@
                 android:background="@color/white"
                 android:layout_height="match_parent">
 
-
-                <EditText
-                    android:id="@+id/passwordEt"
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/password"
+                    style="@style/edit_text_background"
                     android:layout_marginTop="40dp"
-                    android:background="@drawable/et_border"
-                    android:hint="Password"
-                    android:text="@={model.message}"
-                    android:inputType="number"
-                    android:maxLength="4"
-                    android:paddingStart="4dp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:hintTextAppearance="@style/edit_text_hint">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passwordEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:singleLine="true"
+                        android:text="@={model.message}"
+                        android:hint="Enter pin"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <Button
                     android:id="@+id/loginBtn"
@@ -57,7 +65,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/passwordEt" />
+                    app:layout_constraintTop_toBottomOf="@id/password" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

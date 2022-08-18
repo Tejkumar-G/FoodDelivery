@@ -35,7 +35,7 @@ public class ProductDetailsViewModel extends BaseObservable {
     }
 
     public String getPrice() {
-        return price;
+        return "$" + price;
     }
 
     public void setPrice(String price) {

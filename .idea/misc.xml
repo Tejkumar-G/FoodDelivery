@@ -9,18 +9,21 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/drawable/et_border.xml" value="0.252" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/drawable/rectangle.xml" value="0.252" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/drawable/rectangle_end.xml" value="0.252" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/drawable/side_nav_bar.xml" value="0.252" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/activity_main.xml" value="0.26875" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/category_item.xml" value="0.5" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/checkout_item.xml" value="0.5" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_checkout.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_dashboard.xml" value="0.432523051131601" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_first.xml" value="0.26875" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_login.xml" value="0.26875" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_product_details.xml" value="0.401244167962675" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_second.xml" value="0.26875" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/fragment_transactions.xml" value="0.26875" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/nav_header_navigation.xml" value="0.26875" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/product_item.xml" value="0.6619718309859155" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/transaction_item.xml" value="0.26875" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/user_details_in_dialog.xml" value="0.6334716459197787" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/FoodDelivery/app/src/main/res/layout/user_details_in_dialog.xml" value="0.4351851851851852" />
       </map>
     </option>
   </component>

@@ -1,24 +1,18 @@
 package com.example.fooddelivery.fragments.product_details;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.fooddelivery.R;
 import com.example.fooddelivery.databinding.FragmentProductDetailsBinding;
 import com.example.fooddelivery.db.Food;
 
 public class ProductDetailsFragment extends Fragment {
     Food food;
-
-
     public ProductDetailsFragment(Food food) {
         this.food = food;
     }
@@ -32,5 +26,4 @@ public class ProductDetailsFragment extends Fragment {
         binding.getModel().checkForItemDetails(requireContext());
         return binding.getRoot();
     }
-
 }

@@ -18,14 +18,16 @@
         app:cardCornerRadius="15dp"
         android:layout_margin="10dp"
         android:onClick="@{(view) -> listener.onClick(category, view)}"
-        android:background="@color/white"
         android:elevation="10dp"
         android:id="@+id/category_card">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp">
+            android:paddingBottom="10dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/white"
+            android:layout_margin="2dp">
 
             <ImageView
                 android:id="@+id/category_image"
