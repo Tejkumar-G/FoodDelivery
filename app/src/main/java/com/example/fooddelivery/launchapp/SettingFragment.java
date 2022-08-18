@@ -1,4 +1,4 @@
-package com.example.fooddelivery;
+package com.example.fooddelivery.launchapp;
 
 import android.Manifest;
 import android.app.Activity;
@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,14 +26,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fooddelivery.R;
 import com.example.fooddelivery.db.splash.SplashImage;
 import com.example.fooddelivery.db.splash.SplashImageRepository;
 import com.example.fooddelivery.helper.ImageConvertor;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;

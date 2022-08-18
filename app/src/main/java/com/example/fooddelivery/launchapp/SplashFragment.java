@@ -1,4 +1,4 @@
-package com.example.fooddelivery;
+package com.example.fooddelivery.launchapp;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.fooddelivery.R;
 import com.example.fooddelivery.fragments.login.LoginFragment;
 import com.example.fooddelivery.helper.Navigation;
 

@@ -1,11 +1,17 @@
 package com.example.fooddelivery.fragments.checkout;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
+import com.example.fooddelivery.R;
 import com.example.fooddelivery.db.order.OrderItem;
 import com.example.fooddelivery.db.order.OrderRepository;
 import com.example.fooddelivery.db.transaction.Transaction;
@@ -13,6 +19,7 @@ import com.example.fooddelivery.db.transaction.TransactionRepository;
 import com.example.fooddelivery.helper.Constant;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.helper.Utills;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -95,12 +102,36 @@ public class CheckoutViewModel extends BaseObservable {
         return subtotalInteger+tax;
     }
 
-    public void createTransaction(View view){
-        Transaction transaction = new Transaction(Constant.userName,Constant.userRole,getTotalVal(), new SimpleDateFormat("dd-MMM-yyyy").format(new Date()), orderItemList.size());
+    public void createTransaction(View view, Transaction transaction){
         new TransactionRepository(view.getContext()).addTransactionData(transaction);
         new OrderRepository(view.getContext()).clearCart();
         Utills.showToast("Order Placed successfully", view.getContext());
         Navigation.goBackScreen(Navigation.getActivity(view));
     }
 
+    public void createTransaction(View view){
+        Transaction transaction = new Transaction(Constant.userName,Constant.userRole,getTotalVal(), new SimpleDateFormat("dd-MMM-yyyy").format(new Date()), orderItemList.size());
+        createTransaction(view, transaction);
+    }
+
+    public void registerUser(View view, LayoutInflater layoutInflater) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext());
+        LayoutInflater inflater = layoutInflater;
+        View dialogView = inflater.inflate(R.layout.user_details_in_dialog, null);
+        dialogBuilder.setView(dialogView);
+
+        TextInputLayout userName = (TextInputLayout) dialogView.findViewById(R.id.user_name);
+        TextInputLayout userEmail = (TextInputLayout) dialogView.findViewById(R.id.user_email);
+        TextInputLayout mobile = (TextInputLayout) dialogView.findViewById(R.id.user_mobile);
+        Button submit = (Button) dialogView.findViewById(R.id.submit);
+        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.show();
+
+        submit.setOnClickListener(value -> {
+            Transaction transaction = new Transaction(userName.getEditText().getText().toString(),Constant.userRole,getTotalVal(), new SimpleDateFormat("dd-MMM-yyyy").format(new Date()), orderItemList.size());
+            createTransaction(view, transaction);
+            alertDialog.dismiss();
+        });
+    }
 }

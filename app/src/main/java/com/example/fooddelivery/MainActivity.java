@@ -2,8 +2,6 @@ package com.example.fooddelivery;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +22,8 @@ import com.example.fooddelivery.db.user.User;
 import com.example.fooddelivery.fragments.login.LoginFragment;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.helper.Utills;
+import com.example.fooddelivery.launchapp.SettingFragment;
+import com.example.fooddelivery.launchapp.SplashFragment;
 import com.example.fooddelivery.transactions.TransactionsFragment;
 import com.google.android.material.navigation.NavigationView;
 

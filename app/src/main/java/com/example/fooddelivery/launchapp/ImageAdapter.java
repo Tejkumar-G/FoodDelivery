@@ -1,6 +1,5 @@
-package com.example.fooddelivery;
+package com.example.fooddelivery.launchapp;
 
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fooddelivery.R;
 import com.example.fooddelivery.db.splash.SplashImage;
 import com.example.fooddelivery.db.splash.SplashImageRepository;
 import com.example.fooddelivery.helper.ImageConvertor;

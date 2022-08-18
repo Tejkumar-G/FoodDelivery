@@ -1,4 +1,4 @@
-package com.example.fooddelivery;
+package com.example.fooddelivery.launchapp;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.fooddelivery.R;
 import com.example.fooddelivery.helper.ImageConvertor;
 
 public class ImageFragment extends Fragment {
