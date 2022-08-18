@@ -10,7 +10,7 @@
         android:id="@+id/defaultImage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@mipmap/splash2"
         app:layout_constraintBottom_toTopOf="@id/view_pager"
         app:layout_constraintEnd_toEndOf="parent"
