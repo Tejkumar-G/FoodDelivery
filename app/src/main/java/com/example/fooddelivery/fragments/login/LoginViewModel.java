@@ -15,6 +15,8 @@ import com.example.fooddelivery.helper.ImageConvertor;
 import com.example.fooddelivery.helper.Navigation;
 import com.example.fooddelivery.helper.Utills;
 
+import java.util.Objects;
+
 
 public class LoginViewModel extends BaseObservable {
     public String message = "";
@@ -34,16 +36,16 @@ public class LoginViewModel extends BaseObservable {
                 User user = new User("Dola","Server", ImageConvertor.convertPNGBitmapToByteArray(BitmapFactory.decodeResource(view.getContext().getResources(), R.mipmap.server)));
                 Constant.userName = user.getUserName();
                 Constant.userRole = "Server";
-                Navigation.getActivity(view).configureUserInfo(user,R.mipmap.server);
-                Navigation.replaceFragment(Navigation.getActivity(view),new DashboardFragment(),false);
+                Objects.requireNonNull(Navigation.getActivity(view)).configureUserInfo(user,R.mipmap.server);
+                Navigation.replaceFragment(Objects.requireNonNull(Navigation.getActivity(view)),new DashboardFragment(),false);
                 Utills.closeKeyboard(view);
             }
             else if (message.contentEquals("1111")) {
                 User user = new User("Tej","Manager", ImageConvertor.convertPNGBitmapToByteArray(BitmapFactory.decodeResource(view.getContext().getResources(),R.mipmap.manager)));
                 Constant.userName = user.getUserName();
                 Constant.userRole = "Manager";
-                Navigation.getActivity(view).configureUserInfo(user,R.mipmap.manager);
-                Navigation.replaceFragment(Navigation.getActivity(view),new DashboardFragment(),false);
+                Objects.requireNonNull(Navigation.getActivity(view)).configureUserInfo(user,R.mipmap.manager);
+                Navigation.replaceFragment(Objects.requireNonNull(Navigation.getActivity(view)),new DashboardFragment(),false);
                 Utills.closeKeyboard(view);
             }
             else {

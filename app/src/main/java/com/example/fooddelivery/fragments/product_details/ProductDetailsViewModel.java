@@ -113,7 +113,7 @@ public class ProductDetailsViewModel extends BaseObservable {
                 orderItem.setId(itemList.get(0).getId());
                 orderRepository.addOrderedItem(orderItem);
             } else {
-                orderRepository.deleteORDER(orderItem);
+                orderRepository.deleteORDER(itemList.get(0));
             }
         }
 

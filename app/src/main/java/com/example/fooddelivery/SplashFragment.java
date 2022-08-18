@@ -25,18 +25,14 @@ public class SplashFragment extends Fragment {
 
 
 
-    private List<byte[]> images  = new ArrayList<>();
+    private final List<byte[]> images  = new ArrayList<>();
 
     private ViewPager2 viewPager;
-
-    private SplashSlidePagerAdapter pagerAdapter;
 
     private int currentPage = 0;
 
     public SplashFragment(List<byte[]> splashImages) {
-        for (int i=0;i<splashImages.size();i++) {
-            images.add(splashImages.get(i));
-        }
+        images.addAll(splashImages);
     }
 
     @Override
@@ -54,12 +50,12 @@ public class SplashFragment extends Fragment {
         if(images.size()>0) {
             viewPager = view.findViewById(R.id.view_pager);
             viewPager.setVisibility(View.VISIBLE);
-            pagerAdapter = new SplashSlidePagerAdapter(getActivity());
+            SplashSlidePagerAdapter pagerAdapter = new SplashSlidePagerAdapter(getActivity());
             viewPager.setAdapter(pagerAdapter);
             startSplashTimer();
         } else {
             new Handler().postDelayed(() -> {
-                Navigation.replaceFragment(getActivity(),new LoginFragment(),false);
+                Navigation.replaceFragment(requireActivity(),new LoginFragment(),false);
             }, 2000);
         }
     }
@@ -69,7 +65,7 @@ public class SplashFragment extends Fragment {
         Runnable update = () -> {
             if ( currentPage == images.size() ) {
 //                replaceFragment(new ImageFragment());
-                Navigation.replaceFragment(getActivity(),new LoginFragment(),false);
+                Navigation.replaceFragment(requireActivity(),new LoginFragment(),false);
             }
             viewPager.setCurrentItem(currentPage++, true);
         };

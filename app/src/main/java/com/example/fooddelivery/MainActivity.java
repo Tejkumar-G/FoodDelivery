@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
         drawer = activityMainBinding.drawerLayout;
         navigationView = activityMainBinding.navView;
-        navigationView.getMenu().findItem(R.id.nav_transactions).setOnMenuItemClickListener(menuItem -> {
+
+        navigationView.getMenu().findItem(R.id.nav_home).setOnMenuItemClickListener(menuItem -> {
+            closeDrawer();
 
             return false;
         });
