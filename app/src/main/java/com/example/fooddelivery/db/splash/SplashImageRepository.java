@@ -1,10 +1,8 @@
 package com.example.fooddelivery.db.splash;
 
-import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.example.fooddelivery.db.Food;
 import com.example.fooddelivery.db.FoodDatabase;
 
 import java.util.List;
@@ -20,7 +18,7 @@ public class SplashImageRepository {
     }
 
     public List<byte []> getAllImageData() {
-        return splashImageDao.getAllImagetem();
+        return splashImageDao.getAllImageItem();
     }
 
     public void addImageData(SplashImage splashImage) {

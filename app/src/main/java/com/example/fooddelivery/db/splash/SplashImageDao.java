@@ -24,7 +24,7 @@ public interface SplashImageDao {
         void updateImageData(SplashImage splashImage);
 
         @Query("SELECT image FROM image_table ORDER BY id ASC")
-        List<byte []> getAllImagetem();
+        List<byte []> getAllImageItem();
 
 
 

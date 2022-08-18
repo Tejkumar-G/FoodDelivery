@@ -1,6 +1,5 @@
 package com.example.fooddelivery.db.category;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 

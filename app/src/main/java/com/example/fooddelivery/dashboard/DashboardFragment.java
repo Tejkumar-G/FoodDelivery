@@ -29,7 +29,6 @@ import com.example.fooddelivery.helper.Navigation;
 import java.util.List;
 
 
-//@AndroidEntryPoint
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel mViewModel;

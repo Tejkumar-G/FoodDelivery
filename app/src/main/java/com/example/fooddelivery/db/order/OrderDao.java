@@ -18,9 +18,6 @@ public interface OrderDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertFoodData(OrderItem order);
 
-//    @Delete
-//    void deleteUserData(OrderItem order);
-
     @Query("DELETE FROM order_table Where id = :id")
     void deleteFoodData(int id);
 

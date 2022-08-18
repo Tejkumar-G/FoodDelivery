@@ -19,9 +19,6 @@ public class TransactionRepository {
         return transactionDao.getAllTransactionItem();
     }
 
-    /*public List<Transaction> getAllTransactionItemsBasedOnTransactionId(String transactionId) {
-        return transactionDao.getTransactionDataBasedOnTransactionId(transactionId);
-    }*/
 
     public void addTransactionData(Transaction transaction) {
 
