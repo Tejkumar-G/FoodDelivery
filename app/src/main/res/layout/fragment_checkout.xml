@@ -124,6 +124,7 @@
                 android:paddingHorizontal="25dp"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
+                android:onClick="@{(view)-> model.openTOGO(view)}"
                 android:visibility="@{model.manager?View.VISIBLE:View.INVISIBLE}"
                 android:background="@drawable/button_background"
                 app:layout_constraintStart_toEndOf="@id/confirm_button"

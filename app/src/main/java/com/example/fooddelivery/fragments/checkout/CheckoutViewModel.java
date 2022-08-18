@@ -114,15 +114,19 @@ public class CheckoutViewModel extends BaseObservable {
         createTransaction(view, transaction);
     }
 
+    public void openTOGO(View view) {
+        registerUser(view, LayoutInflater.from(view.getContext()));
+    }
+
     public void registerUser(View view, LayoutInflater layoutInflater) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext());
         LayoutInflater inflater = layoutInflater;
         View dialogView = inflater.inflate(R.layout.user_details_in_dialog, null);
         dialogBuilder.setView(dialogView);
 
-        TextInputLayout userName = (TextInputLayout) dialogView.findViewById(R.id.user_name);
-        TextInputLayout userEmail = (TextInputLayout) dialogView.findViewById(R.id.user_email);
-        TextInputLayout mobile = (TextInputLayout) dialogView.findViewById(R.id.user_mobile);
+        TextInputLayout userName = dialogView.findViewById(R.id.user_name);
+        TextInputLayout userEmail = dialogView.findViewById(R.id.user_email);
+        TextInputLayout mobile = dialogView.findViewById(R.id.user_mobile);
         Button submit = (Button) dialogView.findViewById(R.id.submit);
         AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -134,4 +138,6 @@ public class CheckoutViewModel extends BaseObservable {
             alertDialog.dismiss();
         });
     }
+
+
 }
