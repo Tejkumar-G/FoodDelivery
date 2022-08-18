@@ -20,7 +20,7 @@ import java.util.List;
 public class ProductsListAdaptor extends RecyclerView.Adapter<ProductsListAdaptor.ViewHolder> {
     List<Food> list;
 
-    public ProductsListAdaptor(List<Food> list, ProductClickListener listener) {
+    public ProductsListAdaptor(List<Food> list) {
         this.list = list;
     }
 

@@ -6,49 +6,36 @@ import android.view.View;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fooddelivery.db.Food;
 import com.example.fooddelivery.db.FoodRepository;
 import com.example.fooddelivery.db.category.Category;
 import com.example.fooddelivery.db.category.CategoryRepository;
 import com.example.fooddelivery.db.order.OrderRepository;
+import com.example.fooddelivery.helper.BindingAdapters;
+import com.example.fooddelivery.helper.ValueObservable;
 
 import java.util.Arrays;
 import java.util.List;
 
 
-//@HiltViewModel
 public class DashboardViewModel extends ViewModel {
-//    SavedStateHandle savedStateHandle;
-//    DashboardViewModel(SavedStateHandle savedStateHandle){
-//        this.savedStateHandle = savedStateHandle;
-//    }
 
+    public MutableLiveData<List<Category>> categories = new MutableLiveData<>();
+    public MutableLiveData<List<Food>> foodList = new MutableLiveData<>();
 
-
-    List<Category> categoryDataList;
-
-    public void getCategories(Context context) {
+    public void loadCategories(Context context) {
         CategoryRepository categoryRepository = new CategoryRepository(context);
-        categoryDataList = categoryRepository.getAllCategoryItems();
+        categories.postValue(categoryRepository.getAllCategoryItems());
     }
 
-    MutableLiveData<ProductsListAdaptor> productAdaptor = new MutableLiveData<ProductsListAdaptor>();
+    public void loadProducts(Category category,Context context) {
+        foodList.postValue(getProductDataOf(category, context));
+    }
 
+    public void openFoodPage(){
 
-
-
-    void displayProducts(Category category, Context context) {
-        List<Food> foodList = getProductDataOf(category, context);
-        ProductsListAdaptor productsListAdaptor = new ProductsListAdaptor(foodList, new ProductClickListener(){
-            @Override
-            public void onClick(Food food) {
-
-            }
-        });
-
-
-        productAdaptor.postValue(productsListAdaptor);
     }
 
     private List<Food> getProductDataOf(Category category, Context context) {
@@ -64,16 +51,6 @@ public class DashboardViewModel extends ViewModel {
 //                new ProductData("", categoryName + " 4", "$0.1"),
 //                new ProductData("", categoryName + " 5", "$0.1")
 //        );
-    }
-
-    public ItemCategoriesAdaptor getCategoryAdaptor(){
-
-        return new ItemCategoriesAdaptor(categoryDataList, new CategoryListener() {
-            @Override
-            public void onClick(Category category, View view) {
-                displayProducts(category, view.getContext());
-            }
-        });
     }
 
 }

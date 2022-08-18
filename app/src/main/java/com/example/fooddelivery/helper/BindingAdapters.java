@@ -1,6 +1,7 @@
 package com.example.fooddelivery.helper;
 
 
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
@@ -9,7 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.fooddelivery.checkout.CheckoutAdapter;
 import com.example.fooddelivery.checkout.CheckoutViewModel;
+import com.example.fooddelivery.dashboard.CategoryListener;
+import com.example.fooddelivery.dashboard.DashboardViewModel;
 import com.example.fooddelivery.dashboard.ItemCategoriesAdaptor;
+import com.example.fooddelivery.dashboard.ProductClickListener;
+import com.example.fooddelivery.dashboard.ProductsListAdaptor;
+import com.example.fooddelivery.db.Food;
+import com.example.fooddelivery.db.category.Category;
 import com.example.fooddelivery.db.order.OrderItem;
 
 import java.util.List;
@@ -21,6 +28,22 @@ public class BindingAdapters {
         recyclerView.setAdapter(adapter);
     }
 
+    @BindingAdapter({"categories"})
+    public static void setCategories(RecyclerView recyclerView, DashboardViewModel viewModel){
+        ItemCategoriesAdaptor adaptor = new ItemCategoriesAdaptor(viewModel.categories.getValue(), new CategoryListener() {
+            @Override
+            public void onClick(Category category, View view) {
+                viewModel.loadProducts(category,view.getContext());
+            }
+        });
+        recyclerView.setAdapter(adaptor);
+    }
+
+    @BindingAdapter({"foods"})
+    public static void setFoods(RecyclerView recyclerView, List<Food> foods){
+        ProductsListAdaptor productsListAdaptor = new ProductsListAdaptor(foods);
+        recyclerView.setAdapter(productsListAdaptor);
+    }
 
     @BindingAdapter({"addImageFromGlide"})
     public static void addImage(ImageView imageView, String url) {
